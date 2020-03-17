@@ -21,7 +21,8 @@ class SessionsController < ApplicationController
       redirect_to '/logout'
     end
 
-#everything below this line is from Rachel Hawa tutorial on Medium
+#everything below this line is from Rachel Hawa tutorial on Medium https://medium.com/swlh/google-authentication-strategy-for-rails-5-application-cd37947d2b1b
+#Special thanks to fellow student @SHANNON CRABILL http://shannoncrabill.com/ a brilliant developer for pointing this out.
 
     def omniauth
       @user = User.from_omniauth(auth)
