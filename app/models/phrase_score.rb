@@ -1,0 +1,2 @@
+class PhraseScore < ApplicationRecord
+end

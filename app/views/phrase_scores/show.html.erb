@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>English familiarity rank:</strong>
+  <%= @phrase_score.english_familiarity_rank %>
+</p>
+
+<p>
+  <strong>Foreign familiarity rank:</strong>
+  <%= @phrase_score.foreign_familiarity_rank %>
+</p>
+
+<p>
+  <strong>Studying now:</strong>
+  <%= @phrase_score.studying_now %>
+</p>
+
+<%= link_to 'Edit', edit_phrase_score_path(@phrase_score) %> |
+<%= link_to 'Back', phrase_scores_path %>

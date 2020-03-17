@@ -1,0 +1,32 @@
+<%= form_with(model: phrase_score, local: true) do |form| %>
+  <% if phrase_score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(phrase_score.errors.count, "error") %> prohibited this phrase_score from being saved:</h2>
+
+      <ul>
+        <% phrase_score.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :english_familiarity_rank %>
+    <%= form.text_field :english_familiarity_rank %>
+  </div>
+
+  <div class="field">
+    <%= form.label :foreign_familiarity_rank %>
+    <%= form.text_field :foreign_familiarity_rank %>
+  </div>
+
+  <div class="field">
+    <%= form.label :studying_now %>
+    <%= form.check_box :studying_now %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

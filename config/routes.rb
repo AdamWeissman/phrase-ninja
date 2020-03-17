@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :phrase_scores
   resources :phrases
   resources :emotions
   resources :situations
