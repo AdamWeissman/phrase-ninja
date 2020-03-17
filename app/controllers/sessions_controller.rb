@@ -1,9 +1,29 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login
 
+    def new
+      @user = User.new
+      render :login
+    end
+
+    def create
+      @user = User.find_or_create_by(user_name: params[:user][:user_name])
+      if @user && @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        redirect_to home_path
+      else
+        redirect_to '/login'
+      end
+    end
+
+    def destroy
+      session.clear
+      redirect_to '/logout'
+    end
 
 #everything below this line is from Rachel Hawa tutorial on Medium
 
-  def omniauth
+    def omniauth
       @user = User.from_omniauth(auth)
       @user.save
       session[:user_id] = @user.id
