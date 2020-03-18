@@ -1,5 +1,21 @@
-<h1>New User</h1>
+<h1>Sign up here</h1>
 
-<%= render 'form', user: @user %>
+<%= form_for(@user) do |f| %>
 
-<%= link_to 'Back', users_path %>
+<%= render partial: 'layouts/errors', locals: {object: @user} %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, required:true %>
+
+  <%= f.label :beta_key %>
+  <%= f.text_field :beta_key %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "sign up" %>
+
+<% end %>

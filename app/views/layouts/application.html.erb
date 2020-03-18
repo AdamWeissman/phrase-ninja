@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PhraseNinja</title>
+    <title>Phrase Ninja</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+
+    <% if logged_in? %>
+    <nav class="navbar">
+      <%= link_to 'Log Out', logout_path, method: :get, class: 'navlink' %>
+      <%= link_to 'All Languages', languages_path, class: 'navlink'%>
+      <%= link_to 'New Language', new_language_path, class: 'navlink' %>
+      <%= link_to 'All Situations', situations_path, class: 'navlink' %>
+      <%= link_to 'New Situation', new_situation_path, class: 'navlink' %>
+    </nav>
+    <% end %>
+
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>

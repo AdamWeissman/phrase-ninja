@@ -7,23 +7,28 @@ class SessionsController < ApplicationController
     end
 
     def create
-      @user = User.find_or_create_by(user_name: params[:user][:user_name])
+      @user = User.find_by(email: params[:user][:email])
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        redirect_to home_path
+        redirect_to languages_path
       else
+        flash[:error] = "Sorry, your username or password was incorrect"
         redirect_to '/login'
       end
     end
 
+    def home
+      render :home
+    end
+
+    #this is for logout
     def destroy
       session.clear
+      #session.reset
       redirect_to '/'
     end
 
-    def home_for_signup_and_login
-      render :the_page_for_signup_and_login
-    end
+
 
 #everything below this line is from Rachel Hawa tutorial on Medium https://medium.com/swlh/google-authentication-strategy-for-rails-5-application-cd37947d2b1b
 #Special thanks to fellow student @SHANNON CRABILL http://shannoncrabill.com/ a brilliant developer for pointing this out.
