@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#home'
+  root 'sessions#home_method'
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new' #REMEMBER!!! the sessions this is referring to is the SessionsController and the #new is the 'new' method within the controller...  the route where it is being called is here: <%= form_for (@user), url: '/login' do |f| %>.... in other words, that "url: "/login"" is in views/sessions/login.html.erb... and that's what syncs to the UsersController
   #comments continued from above line... in other words: the routes.rb file here in config is the intermediary between the user's experience on some given view page, the url submit method in the form which is referenced with the crud request and hashed to the controller and some #method which in turn renders, redirect_to or link_to some original view

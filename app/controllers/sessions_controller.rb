@@ -17,8 +17,9 @@ class SessionsController < ApplicationController
       end
     end
 
-    def home
-      render :home
+    def home_method
+      render :home_view
+
     end
 
     #this is for logout
