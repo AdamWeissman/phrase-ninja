@@ -1,4 +1,3 @@
-=begin
 class SessionsController < ApplicationController
   skip_before_action :require_login
 
@@ -39,4 +38,3 @@ class SessionsController < ApplicationController
   end
 
 end
-=end
