@@ -35,8 +35,6 @@ gem 'devise', '~> 4.2'
 #This gem provides a mitigation against CVE-2015-9284 (Cross-Site Request Forgery on the request phase when using OmniAuth gem with a Ruby on Rails application) by implementing a CSRF token verifier that directly uses ActionController::RequestForgeryProtection code from Rails.
 gem "omniauth-rails_csrf_protection"
 
-gem 'pry'
-
 #Google Translate
 gem 'google-cloud-translate'
 

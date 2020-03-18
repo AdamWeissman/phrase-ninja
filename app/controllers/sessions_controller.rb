@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login
+  #skip_before_action :require_login
 
     def new
       @user = User.new
@@ -18,18 +18,22 @@ class SessionsController < ApplicationController
 
     def destroy
       session.clear
-      redirect_to '/logout'
+      redirect_to '/'
+    end
+
+    def home_for_signup_and_login
+      render :the_page_for_signup_and_login
     end
 
 #everything below this line is from Rachel Hawa tutorial on Medium https://medium.com/swlh/google-authentication-strategy-for-rails-5-application-cd37947d2b1b
 #Special thanks to fellow student @SHANNON CRABILL http://shannoncrabill.com/ a brilliant developer for pointing this out.
 
-    def omniauth
-      @user = User.from_omniauth(auth)
-      @user.save
-      session[:user_id] = @user.id
-      redirect_to home_path
-    end
+  def omniauth
+    @user = User.from_omniauth(auth)
+    @user.save
+    session[:user_id] = @user.id
+    redirect_to home_path
+  end
 
   private
 
