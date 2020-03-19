@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_03_17_111636) do
     t.string "email"
     t.string "password_digest"
     t.string "beta_key"
+    t.string "google_token"
+    t.string "goole_refresh_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

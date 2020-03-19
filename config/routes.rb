@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   #comments continued from above line... in other words: the routes.rb file here in config is the intermediary between the user's experience on some given view page, the url submit method in the form which is referenced with the crud request and hashed to the controller and some #method which in turn renders, redirect_to or link_to some original view
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  get '/auth/:provider/callback' => 'sessions#omniauth' #from this tutorial https://medium.com/swlh/google-authentication-strategy-for-rails-5-application-cd37947d2b1b
-  #get '/logout' => 'sessions#logout'
+
+  # Routes for Google authentication
+
+  get '/auth/google_oauth2', to: redirect('/auth/google_oauth2'), as: 'google_login'
+  get '/auth/:provider/callback', to: 'sessions#google_auth'
+  get '/auth/failure', to: redirect('/')
 
   resources :languages
   resources :phrase_scores
