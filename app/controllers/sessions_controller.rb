@@ -1,33 +1,35 @@
 class SessionsController < ApplicationController
-  #skip_before_action :require_login
+  skip_before_action :require_login
 
-    def new
-      @user = User.new
-      render :login
+  #this is for root
+  def home_method
+    render :home_view
+  end
+
+  def new
+    @user = User.new
+    render :login
+  end
+
+  def create
+    @user = User.find_by(email: params[:user][:email])
+    if @user && @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to languages_path
+    else
+      flash[:error] = "Sorry #{User.find_by(email: params[:user][:email]).email}, your password is incorrect!"
+      redirect_to '/login'
     end
+  end
 
-    def create
-      @user = User.find_by(email: params[:user][:email])
-      if @user && @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to languages_path
-      else
-        flash[:error] = "Sorry, your username or password was incorrect"
-        redirect_to '/login'
-      end
-    end
 
-    def home_method
-      render :home_view
 
-    end
-
-    #this is for logout
-    def destroy
-      session.clear
-      #session.reset
-      redirect_to '/'
-    end
+  #this is for logout
+  def destroy
+    session.clear
+    #session.reset
+    redirect_to '/'
+  end
 
 
 
@@ -38,7 +40,7 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(auth)
     @user.save
     session[:user_id] = @user.id
-    redirect_to home_path
+    redirect_to languages_path
   end
 
   private

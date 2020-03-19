@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #comments continued from above line... in other words: the routes.rb file here in config is the intermediary between the user's experience on some given view page, the url submit method in the form which is referenced with the crud request and hashed to the controller and some #method which in turn renders, redirect_to or link_to some original view
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
+  get '/auth/:provider/callback' => 'sessions#omniauth' #from this tutorial https://medium.com/swlh/google-authentication-strategy-for-rails-5-application-cd37947d2b1b
   #get '/logout' => 'sessions#logout'
 
   resources :languages
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :situations
   resources :users
 
-  get '/auth/:provider/callback' => 'sessions#omniauth' #from this tutorial https://medium.com/swlh/google-authentication-strategy-for-rails-5-application-cd37947d2b1b
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 

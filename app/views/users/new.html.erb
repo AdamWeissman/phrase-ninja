@@ -1,4 +1,4 @@
-<h1>Sign up here</h1>
+<div><center><h1>Sign up here</h1>
 
 <%= form_for(@user) do |f| %>
 
@@ -15,7 +15,8 @@
 
   <%= f.label :password %>
   <%= f.password_field :password %>
-
+<br>
   <%= f.submit "sign up" %>
 
 <% end %>
+</center></div>
