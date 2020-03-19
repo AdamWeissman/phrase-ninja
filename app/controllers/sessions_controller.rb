@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
   end
 
 
-
   #this is for logout
   def destroy
     session.clear
@@ -34,7 +33,7 @@ class SessionsController < ApplicationController
   def google_auth
     # Get access tokens from the google server
     access_token = request.env["omniauth.auth"]
-    user = User.find_or_create_by(current_user.id)
+    user = User.find_or_create_by(current_user)
 
     user.update_attributes(:google_token => access_token.credentials.token)
 
@@ -44,7 +43,7 @@ class SessionsController < ApplicationController
 
     refresh_token = access_token.credentials.refresh_token
 
-    user.update_attributes(:google_refresh_token => refresh_token) if refresh_token.present?
+    user.update_attributes(google_refresh_token: :refresh_token) if refresh_token.present?
 
     session[:user_id] = user.id.to_s
     redirect_to languages_path, notice: 'Successfully connected to Google!'

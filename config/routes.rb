@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   # Routes for Google authentication
 
-  get '/auth/google_oauth2', to: redirect('/auth/google_oauth2'), as: 'google_login'
-  get '/auth/:provider/callback', to: 'sessions#google_auth'
-  get '/auth/failure', to: redirect('/')
+  get 'auth/google_oauth2', to: redirect('auth/google_oauth2'), as: 'google_login'
+  get 'auth/:provider/callback', to: 'sessions#google_auth'
+  get 'auth/failure', to: redirect('/')
 
   resources :languages
   resources :phrase_scores

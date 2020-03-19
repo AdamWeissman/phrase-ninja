@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :beta_key
 
       t.string :google_token
-      t.string :goole_refresh_token
+      t.string :google_refresh_token
       t.timestamps
     end
   end
