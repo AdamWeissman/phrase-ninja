@@ -1,11 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login
 
-  #this is for root
-  def home_method
-    render :home_view
-  end
-
   def new
     @user = User.new
     render :login
@@ -39,7 +34,7 @@ class SessionsController < ApplicationController
   def google_auth
     # Get access tokens from the google server
     access_token = request.env["omniauth.auth"]
-    user = User.find(current_user.id)
+    user = User.find_or_create_by(current_user.id)
 
     user.update_attributes(:google_token => access_token.credentials.token)
 
@@ -52,7 +47,7 @@ class SessionsController < ApplicationController
     user.update_attributes(:google_refresh_token => refresh_token) if refresh_token.present?
 
     session[:user_id] = user.id.to_s
-    redirect_to root_path, notice: 'Successfully connected to Google!'
+    redirect_to languages_path, notice: 'Successfully connected to Google!'
   end
 
   #private
