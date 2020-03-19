@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     render :home_view
   end
 
-  # GET /users/new THIS IS THE SIGN UP FORM
+  # GET /users/new THIS IS THE SIGN UP FORM 
   def new
     @user = User.new
     render :new
