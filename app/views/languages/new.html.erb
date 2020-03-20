@@ -1,5 +1,14 @@
 <h1>New Language</h1>
 
-<%= render 'form', language: @language %>
+<%= require "google/cloud/translate" %>
 
-<%= link_to 'Back', languages_path %>
+<%= translate = Google::Cloud::Translate.new %>
+
+<%= translation = translate.translate "Hello world!", to: "ja" %>
+
+<%= puts translation %>
+
+<%= translation.from %>
+<%= translation.origin %>
+<%= translation.to %>
+<%= translation.text %>
