@@ -7,8 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+#Commented out for Google Login and Google Translate API
 .env
 /config/local_env.yml
+/config/google_cloud.json
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
