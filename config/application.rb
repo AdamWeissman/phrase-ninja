@@ -1,8 +1,15 @@
 require_relative 'boot'
 
 require 'google/cloud/translate'
+require "romaji"
+require "romaji/core_ext/string"
 
 require 'rails/all'
+
+def translate(something)
+  translate = Google::Cloud::Translate.new version: :v2
+  translate.translate something, to: "ja"
+end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

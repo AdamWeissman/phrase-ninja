@@ -38,6 +38,12 @@ gem 'omniauth-google-oauth2'
 #Google Translate
 gem 'google-cloud-translate'
 gem 'google-api-client'
+gem 'google-cloud-storage'
+
+#and japanese #https://www.rubydoc.info/gems/romaji/0.2.4
+gem 'romaji'
+
+
 
 
 # Use Active Storage variant
