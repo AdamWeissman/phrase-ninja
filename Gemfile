@@ -40,6 +40,11 @@ gem 'google-cloud-translate'
 gem 'google-api-client'
 gem 'google-cloud-storage'
 
+#morphological text analyzer ... PLEASE WORK!!!!
+gem 'romaji'
+gem 'tiny_segmenter'
+gem 'tataki'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
