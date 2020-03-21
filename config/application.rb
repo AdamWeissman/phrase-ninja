@@ -8,17 +8,23 @@ require "tiny_segmenter"
 require "tataki"
 
 def translate(something)
-  translator = Google::Cloud::Translate.new version: :v2
-  the_translation = translator.translate something, to: "ja"
+  @translator = Google::Cloud::Translate.new version: :v2
+  the_translation = @translator.translate something, to: "ja"
+  the_translation.text
+end
+
+def translate_back(something)
+  the_translation = @translator.translate something, to: "en"
   the_translation.text
 end
 
 def crazy_translate(something)
   ts = TinySegmenter.new
-  x = translate(something)
-  x = x.to_kana
-  y = ts.segment(x)
-  y
+  google_translation = translate(something)
+  #x = x.to_kana
+  tiny_segmented_translation = ts.segment(google_translation)
+  z = y.map {|s| s.romaji }.join(" ")
+
 end
 
 

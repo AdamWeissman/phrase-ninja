@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :password_digest
       t.string :beta_key
 
+#i'm not sure if those google_tokens are actually working or not
       t.string :google_token
       t.string :google_refresh_token
       t.timestamps
