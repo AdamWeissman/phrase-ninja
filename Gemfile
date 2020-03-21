@@ -21,7 +21,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-
+gem "pry"
 
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -40,11 +40,6 @@ gem 'google-cloud-translate'
 gem 'google-api-client'
 gem 'google-cloud-storage'
 
-#and japanese #https://www.rubydoc.info/gems/romaji/0.2.4
-gem 'romaji'
-
-
-
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -55,6 +50,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
 end
 
 group :development do
@@ -69,7 +65,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   #gem 'capybara', '>= 2.15'
-  gem "pry"
+
   #gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   #gem 'webdrivers'
