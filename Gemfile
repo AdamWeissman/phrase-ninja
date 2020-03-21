@@ -36,7 +36,7 @@ gem 'omniauth-google-oauth2'
 #gem "omniauth-rails_csrf_protection"
 
 #Google Translate
-gem 'google-cloud-translate'
+gem 'google-cloud-translate', require: 'google/cloud/translate'
 gem 'google-api-client'
 gem 'google-cloud-storage'
 
