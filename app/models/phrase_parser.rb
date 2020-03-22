@@ -1,16 +1,30 @@
 class PhraseParser
 
-  attr_accessor :text_blob, :phrases_to_be_made
+  attr_accessor :text_blob
 
   def initialize(text_blob_for_phrases)
     self.text_blob = text_blob_for_phrases
-    self.phrases_to_be_made = separate_the_content
   end
 
   def separate_the_content
     text_blob.split("\n")
   end
 
+  def phrases_for_situations
+    uncategorized_phrases = separate_the_content
+    phrases_for_situations_test = []
+    uncategorized_phrases.each do |x|
+      the_new_phrase = Phrase.new(english: x)
+      #match category split on :
+      #category_got = category_getter(the_new_phrase)
+      #the_new_phrase(category: category_got)
+      the_new_phrase.save
+      the_new_phrase.translate
+      the_new_phrase.save
+      phrases_for_situations_test << the_new_phrase
+    end
+    phrases_for_situations_test
+  end
 end
 
 
