@@ -14,10 +14,10 @@ class PhraseParser
     uncategorized_phrases = separate_the_content
     phrases_for_situations_test = []
     uncategorized_phrases.each do |x|
-      the_new_phrase = Phrase.new(english: x)
       #match category split on :
       #category_got = category_getter(the_new_phrase)
       #the_new_phrase(category: category_got)
+      the_new_phrase = Phrase.new(english: x)
       the_new_phrase.save
       the_new_phrase.translate
       the_new_phrase.save
