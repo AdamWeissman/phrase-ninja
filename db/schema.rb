@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_105813) do
     t.float "phrase_score_average"
     t.float "phrase_score_median"
     t.float "phrase_score_mode"
+    t.text "text_blob_for_phrases"
     t.boolean "studying_now", default: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
