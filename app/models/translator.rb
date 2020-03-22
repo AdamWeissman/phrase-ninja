@@ -1,6 +1,6 @@
 class Translator
 
-  attr_accessor :english, :translated_text, :phonetic_text
+  attr_accessor :english, :english_equivalent_text, :translated_text, :phonetic_text
 
   def initialize(english)
     self.english = english
@@ -14,6 +14,11 @@ class Translator
     the_translation = translator.translate english, to: "ja"
 
     self.translated_text = the_translation.text
+
+    reverse_translate = translator.translate the_translation.text, to: "en"
+
+    self.english_equivalent_text = reverse_translate.text
+
   end
 
   def make_phonetic

@@ -1,6 +1,6 @@
 class Phrase < ApplicationRecord
-  has_many :emotions
-  has_many :situations, through: :emotions
+  belongs_to :situation
+  belongs_to :phrase_score
 
   def translate
     if english.present?
@@ -8,6 +8,7 @@ class Phrase < ApplicationRecord
 
       self.japanese = translator.translated_text
       self.japanese_phonetic = translator.phonetic_text
+      seff.english_equivalent = translator.english_equivalent_text
 
       save
     end

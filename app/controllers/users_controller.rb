@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     render :home_view
   end
 
-  # GET /users/new THIS IS THE SIGN UP FORM 
+  # GET /users/new THIS IS THE SIGN UP FORM
   def new
     @user = User.new
     render :new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       #login the user
       session[:user_id] = @user.id
-      redirect_to languages_path
+      redirect_to situations_path
     else
       render :new
     end
