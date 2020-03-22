@@ -11,7 +11,7 @@ class Translator
   def translate
     translator = Google::Cloud::Translate.new version: :v2
 
-    the_translation = translator.translate english, to: "ja"
+    the_translation = translator.translate english, to: "ja" #this English refers to the attr_accessor variable set in initialize 
 
     self.translated_text = the_translation.text
 
