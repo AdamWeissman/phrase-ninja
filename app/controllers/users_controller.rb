@@ -34,6 +34,6 @@ class UsersController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :beta_key, :password) #password_digest was previously password...if you left as password_digest it would be stored unhashed (or something like that)
+      params.require(:user).permit(:name, :email, :beta_key, :password, :google_token, :google_refresh_token) #password_digest was previously password...if you left as password_digest it would be stored unhashed (or something like that)
     end
 end
