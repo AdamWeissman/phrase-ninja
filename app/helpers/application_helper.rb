@@ -17,3 +17,16 @@ module ApplicationHelper
     end
   end
 end
+
+    #THESE METHODS BELOW ARE FROM MY SINATRA PROJECT ARIADNE FOR CONTRAST
+    #def current_user
+    #  @current_user ||= User.find(session[:your_session])
+    #end
+
+    #def logged_in?
+    #  !!session[:your_session] #!! converts variable to its boolean value
+    #end
+
+    #def authenticated_project?
+    #  @project.user_id == @user.id
+    #end
