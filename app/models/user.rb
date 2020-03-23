@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, :email, :beta_key, presence: true
   validates :email, uniqueness: true
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}
 
   def self.from_omniauth(auth)
     # Creates a new user only if it doesn't exist

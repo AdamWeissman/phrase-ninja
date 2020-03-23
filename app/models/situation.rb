@@ -4,8 +4,8 @@ class Situation < ApplicationRecord
   has_many :phrases
   has_many :phrase_scores, through: :phrases
 
-  validates :name, presence: true, length: { minimum: 6, maximum: 100 }  
-
+  validates :name, presence: true, length: { minimum: 6, maximum: 100 }
+  validates :name, uniqueness: true
   #commenting out the tests
 
   #def testit
