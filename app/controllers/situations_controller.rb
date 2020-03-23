@@ -87,6 +87,6 @@ class SituationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def situation_params
-      params.require(:situation).permit(:name, :studying_now, :phrase_id, :text_blob_for_phrases, :user_id)
+      params.require(:situation).permit(:name, :studying_now, :phrase_id, :text_blob_for_phrases, :user_id, :phrase_score_average, :phrase_score_median, :phrase_score_mode)
     end
 end
