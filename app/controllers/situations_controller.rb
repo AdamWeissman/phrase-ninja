@@ -38,6 +38,8 @@ class SituationsController < ApplicationController
       @user = current_user
       @situation = @user.situations.new(situation_params)
       @situation.save
+      @situation.whip_up_some_phrases
+
       #respond_to do |format|
         #if @situation.save
       redirect_to situations_path
