@@ -7,8 +7,8 @@
     <tr>
       <th>STUDY</th>
       <th>  </th>
-      <th><center>Situation Name</center></th>
-      <th colspan="3"><center>Actions</center></th>
+      <th><center>YOUR SITUATIONS</center></th>
+      <th colspan="3"><center>ACTIONS</center></th>
     </tr>
   </thead>
 
@@ -16,7 +16,7 @@
     <% @situations.each do |situation| %>
       <tr>
         <td><center><%= check_box_tag 'activated[]', situation.studying_now %><center></td>
-        <td>  </td>
+        <td> | </td>
         <td><%= situation.name %></td>
         <td><%= link_to 'Edit', edit_situation_path(situation) %></td>
         <td><%= link_to 'Destroy', situation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
