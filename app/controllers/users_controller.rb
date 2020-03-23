@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     render :home_view
   end
 
+  def about
+    #you don't need to do anything to render the about page
+  end
+
   # GET /users/new THIS IS THE SIGN UP FORM
   def new
     @user = User.new

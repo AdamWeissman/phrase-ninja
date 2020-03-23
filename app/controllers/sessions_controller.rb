@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
     user.update_attributes(google_refresh_token: :refresh_token) if refresh_token.present?
 
     session[:user_id] = user.id.to_s
-    redirect_to situations_path, notice: 'Successfully connected to Google!'
+    redirect_to situations_path, notice: 'Successfully connected to Google!' #this must redirect to situations index
   end
 
   #private
