@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
 
   #resources :phrase_scores
-  #resources :phrases
+
   resources :situations, only: [:index, :new, :create, :edit, :destroy, :patch]
-  resources :users
+  resources :users, only: [:new, :create]
+  resources :phrases, only: [:index, :show]
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
