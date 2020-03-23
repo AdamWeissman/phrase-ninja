@@ -4,8 +4,12 @@ class SituationsController < ApplicationController
   # GET /situations
   # GET /situations.json
   def index
-
-    @situations = Situation.all
+    if logged_in?
+      @user = current_user
+      @situations = @user.situations.all
+    else
+      redirect_to '/'
+    end
   end
 
   # GET /situations/1
@@ -15,7 +19,12 @@ class SituationsController < ApplicationController
 
   # GET /situations/new
   def new
-    @situation = Situation.new
+    if logged_in?
+      @user = current_user
+      @situation = @user.situations.new
+    else
+      redirect_to "/"
+    end
   end
 
   # GET /situations/1/edit
@@ -25,16 +34,24 @@ class SituationsController < ApplicationController
   # POST /situations
   # POST /situations.json
   def create
-    @situation = Situation.new(situation_params)
-
-    respond_to do |format|
-      if @situation.save
-        format.html { redirect_to @situation, notice: 'Situation was successfully created.' }
-        format.json { render :show, status: :created, location: @situation }
-      else
-        format.html { render :new }
-        format.json { render json: @situation.errors, status: :unprocessable_entity }
-      end
+    if logged_in?
+      @user = current_user
+      @situation = @user.situations.new(situation_params)
+      @situation.save
+      #respond_to do |format|
+        #if @situation.save
+      redirect_to situations_path
+          #format.html { redirect_to @user.situations.all, notice: 'Situation was successfully created.' }
+          #format.json { render :index, status: :created, location: @situation }
+      #  else
+        #  nil
+          #render :html "oops"
+          #format.html { render :new }
+          #format.json { render json: @situation.errors, status: :unprocessable_entity }
+      #  end
+      #end
+    else
+      redirect_to "/"
     end
   end
 
@@ -65,11 +82,11 @@ class SituationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_situation
-      @situation = Situation.find(params[:id])
+      @situation = @user.situation.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def situation_params
-      params.require(:situation).permit(:name, :studying_now, :phrase_id)
+      params.require(:situation).permit(:name, :studying_now, :phrase_id, :text_blob_for_phrases, :user_id)
     end
 end
