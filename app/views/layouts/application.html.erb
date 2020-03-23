@@ -11,15 +11,12 @@
   <body>
 
     <% if logged_in? %>
-    <nav class="navbar">
+    <center><nav class="navbar">
       <%= link_to 'Log Out', logout_path, method: :get, class: 'navlink' %>
-      <%= link_to 'All Languages', languages_path, class: 'navlink'%>
-      <%= link_to 'New Language', new_language_path, class: 'navlink' %>
-      <%= link_to 'All Situations', situations_path, class: 'navlink' %>
-      <%= link_to 'New Situation', new_situation_path, class: 'navlink' %>
+      <%= link_to 'Situations Home', situations_path, class: 'navlink' %>
     </nav>
     <% end %>
-
+    </center>
     <div class="container">
     <%= yield %>
     </div>

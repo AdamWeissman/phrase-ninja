@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     #you don't need to do anything to render the about page
   end
 
-  # GET /users/new THIS IS THE SIGN UP FORM
+  # GET /users/new THIS IS THE SIGN UP FORM/SIGN UP PATH
   def new
     @user = User.new
     render :new
