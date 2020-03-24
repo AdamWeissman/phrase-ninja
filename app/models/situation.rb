@@ -14,7 +14,7 @@ class Situation < ApplicationRecord
 
   def whip_up_some_phrases
     if self.text_blob_for_phrases.present?
-      @phrase_parser = PhraseParser.new(text_blob_for_phrases)
+      @phrase_parser = PhraseParser.new(text_blob_for_phrases, id)
       #binding.pry
       @phrase_parser.phrases_for_situations
     end
