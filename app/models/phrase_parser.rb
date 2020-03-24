@@ -34,7 +34,7 @@ class PhraseParser
         next
       end
     end
-    phrases_for_situations_test
+    #phrases_for_situations_test #this line is now unnecessary considering the parser works.
   end
 
 #this was a nightmare to setup, hours of testing on repl.it I hope it works here.
