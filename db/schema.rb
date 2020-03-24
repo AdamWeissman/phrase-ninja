@@ -13,7 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_03_17_105813) do
 
   create_table "phrase_scores", force: :cascade do |t|
-    t.float "familiarity_rank"
+    t.string "familiarity_name"
+    t.float "familiarity_name_corresponding_points"
     t.boolean "studying_now", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_105813) do
     t.text "english_equivalent"
     t.text "japanese"
     t.text "japanese_phonetic"
+    t.float "familiarity_score"
     t.string "category"
     t.boolean "studying_now", default: false
     t.integer "situation_id", null: false

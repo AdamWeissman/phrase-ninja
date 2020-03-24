@@ -5,6 +5,7 @@ class CreatePhrases < ActiveRecord::Migration[6.0]
       t.text :english_equivalent
       t.text :japanese
       t.text :japanese_phonetic
+      t.float :familiarity_score
 
       t.string :category
 
