@@ -69,6 +69,6 @@ class PhraseScoresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def phrase_score_params
-      params.require(:phrase_score).permit(:familiarity_rank, :studying_now, :phrase_id)
+      params.require(:phrase_score).permit(:familiarity_rank, :studying_now)
     end
 end

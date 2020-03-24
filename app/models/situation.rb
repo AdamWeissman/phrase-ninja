@@ -9,13 +9,14 @@ class Situation < ApplicationRecord
   #commenting out the tests
 
   #def testit
-  #  @x
+  # @x
   #end
 
   def whip_up_some_phrases
-    if text_blob_for_phrases.present?
-      phrase_parser = PhraseParser.new(text_blob_for_phrases)
-      #@x = phrase_parser.phrases_for_situations
+    if self.text_blob_for_phrases.present?
+      @phrase_parser = PhraseParser.new(text_blob_for_phrases)
+      #binding.pry
+      @phrase_parser.phrases_for_situations
     end
   end
 
