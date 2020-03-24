@@ -24,6 +24,7 @@ class PhraseParser
         the_split = line_splitter(line)
         the_category = the_split[0].strip
         the_phrase = the_split[1].strip
+        @user = @current_user
         the_new_phrase = Phrase.new(category: the_category, english: the_phrase)
         the_new_phrase.save
         the_new_phrase.translate
