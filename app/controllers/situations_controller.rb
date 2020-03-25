@@ -14,8 +14,9 @@ class SituationsController < ApplicationController
 
   # GET /situations/1
   # GET /situations/1.json
-  #def show
-  #end
+  def show
+
+  end
 
   # GET /situations/new
   def new
@@ -76,22 +77,22 @@ class SituationsController < ApplicationController
   # DELETE /situations/1
   # DELETE /situations/1.json
   def destroy
-    if logged_in?
-      @user = current_user
       @situation.destroy
       respond_to do |format|
         format.html { redirect_to situations_url, notice: 'Situation was successfully destroyed.' }
         format.json { head :no_content }
       end
-    else
-      redirect_to "/"
-    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_situation
-      @situation = @user.situation.find(params[:id])
+      if logged_in?
+      @user = current_user
+      @situation = @user.situations.find(params[:id])
+      else
+        redirect_to "/"
+      end
     end
 
     # Only allow a list of trusted parameters through.

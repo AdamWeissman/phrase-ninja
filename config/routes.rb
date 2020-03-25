@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   #resources :phrase_scores
 
-  resources :situations, only: [:index, :new, :create, :edit, :destroy, :patch]
+  resources :situations, only: [:index, :new, :create, :edit, :show, :destroy, :patch]
   resources :users, only: [:new, :create]
   #resources :phrases, only: [:index, :edit, :delete]
 
