@@ -1,7 +1,7 @@
-<h1>Editing The Title of The Situation</h1>
+<center><h1>Editing The Title of The Situation</h1>
 
 <%= form_for @situation do |f| %>
-<% if situation.errors.any? %>
+<% if @situation.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(situation.errors.count, "error") %> prohibited this situation from being saved:</h2>
 
@@ -14,8 +14,8 @@
 <% end %>
 
 <div class="field">
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.label :name, "CHANGE THE NAME OF THE SITUATION" %>
+  <%= f.text_field :name, size: 55 %>
 </div>
 
 <div class="actions">
@@ -24,3 +24,4 @@
 <% end %>
 
 <%= link_to 'Back', situations_path %>
+</center>

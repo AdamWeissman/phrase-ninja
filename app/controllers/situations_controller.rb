@@ -1,5 +1,5 @@
 class SituationsController < ApplicationController
-  before_action :set_situation, only: [:show, :update, :destroy]
+  before_action :set_situation, only: [:show, :edit, :update, :destroy]
 
   # GET /situations
   # GET /situations.json
@@ -30,7 +30,7 @@ class SituationsController < ApplicationController
 
   # GET /situations/1/edit
   def edit
-
+    @situation
   end
 
   # POST /situations
@@ -62,17 +62,17 @@ class SituationsController < ApplicationController
 
   # PATCH/PUT /situations/1
   # PATCH/PUT /situations/1.json
-  #def update
-  #  respond_to do |format|
-  #    if @situation.update(situation_params)
-  #      format.html { redirect_to @situation, notice: 'Situation was successfully updated.' }
-  #      format.json { render :show, status: :ok, location: @situation }
-  #    else
-  #      format.html { render :edit }
-  #      format.json { render json: @situation.errors, status: :unprocessable_entity }
-  #    end
-  #  end
-  #end
+  def update
+    respond_to do |format|
+      if @situation.update(situation_params)
+        format.html { redirect_to situations_path, notice: 'Situation was successfully updated.' }
+        format.json { render :show, status: :ok, location: @situation }
+      else
+        format.html { render :edit }
+        format.json { render json: @situation.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /situations/1
   # DELETE /situations/1.json
@@ -89,11 +89,11 @@ class SituationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_situation
       if logged_in?
-      @user = current_user
-      @situation = @user.situations.find(params[:id])
+        @user = current_user
+        @situation = @user.situations.find(params[:id])
       elsif
-      @user = current_user
-        redirect_to "/situations"
+        @user = current_user
+          redirect_to "/situations"
       else
         redirect_to "/"
       end

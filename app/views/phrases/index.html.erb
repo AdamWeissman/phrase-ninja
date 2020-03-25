@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<center><p id="notice"><%= notice %></p></center>
 
 <h1>Phrases</h1>
 
@@ -6,10 +6,8 @@
   <thead>
     <tr>
       <th>English</th>
-      <th>Foreign</th>
       <th>Category</th>
-      <th>Studying now</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -17,10 +15,7 @@
     <% @phrases.each do |phrase| %>
       <tr>
         <td><%= phrase.english %></td>
-        <td><%= phrase.foreign %></td>
         <td><%= phrase.category %></td>
-        <td><%= phrase.studying_now %></td>
-        <td><%= link_to 'Show', phrase %></td>
         <td><%= link_to 'Edit', edit_situation_phrase_path(phrase) %></td>
         <td><%= link_to 'Destroy', phrase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

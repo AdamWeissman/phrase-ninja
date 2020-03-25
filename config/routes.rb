@@ -19,17 +19,17 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:new, :create]
-  resources :situations, only: [:index, :new, :create, :edit, :destroy]
+  resources :situations, only: [:index, :new, :create, :edit, :update, :destroy]
 
   #manual routing for delete since there will not be a show page for situations
   get '/situations/:id' => 'situations#destroy'
-
+  get '/situations/:id/edit' => 'situations#edit'
   #resources :phrase_scores
-  #resources :phrases, only: [:index, :edit, :delete]
+  #resources :phrases, only: [:index, :edit, :update, :destroy, :new, :create]
 
-  #namespace :situations do
-  #  resources :phrases, only: [:index, :edit, :delete]
-  #end
+  resources :situations do
+    resources :phrases, only: [:index, :edit, :update, :destroy, :new, :create]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   #get '*path' => redirect('/')

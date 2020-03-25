@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<center><p id="notice"><%= notice %></p></center>
 
 <center><h1>SITUATIONS</h1></center>
 <% if @situations.all.count > 0 %>
@@ -8,7 +8,7 @@
       <th>STUDY</th>
       <th>  </th>
       <th>YOUR SITUATIONS</th>
-      <th colspan="3"><center>ACTIONS</center></th>
+      <th colspan="4"><center>ACTIONS</center></th>
     </tr>
   </thead>
 
@@ -16,9 +16,11 @@
     <% @situations.each do |situation| %>
       <tr>
         <td><center><%= check_box_tag 'activated[]', situation.studying_now %><center></td>
-        <td>  </td>
+        <td> <strong>|</strong> </td>
         <td><%= situation.name %></td>
+        <td> <strong>|</strong> </td>
         <td><center><%= link_to 'EDIT SITUATION TITLE', edit_situation_path(situation) %></center></td>
+        <td><center><%= link_to 'EDIT PHRASES', situation_phrases_path(situation) %></center></td>
         <td><center><%= link_to 'DELETE', situation, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
       </tr>
     <% end %>

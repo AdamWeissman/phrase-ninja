@@ -1,10 +1,20 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, only: [:show, :edit, :update, :destroy]
+  #before_action :set_phrase, only: [:edit, :update, :destroy, :new, :create]
 
   # GET /phrases
   # GET /phrases.json
   def index
-    @phrases = Phrase.all
+    #if params[:situation_id]
+    if logged_in?
+      @user = current_user
+      @situation = @user.situations.find_by_id(params[:id])
+      @phrases = @situation.phrases.all
+    else
+      redirect_to '/'
+    end
+    #else
+    #  @phrases = Phrase.all
+    #end
   end
 
   # GET /phrases/1
@@ -63,12 +73,12 @@ class PhrasesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_phrase
-      @phrase = Phrase.find(params[:id])
-    end
+    #def set_phrase
+      #@phrase = Phrase.find(params[:id])
+    #end
 
     # Only allow a list of trusted parameters through.
-    def phrase_params
-      params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now)
-    end
+    #def phrase_params
+    #  params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now)
+    #end
 end
