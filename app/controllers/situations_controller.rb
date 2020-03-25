@@ -78,10 +78,11 @@ class SituationsController < ApplicationController
   # DELETE /situations/1.json
   def destroy
       @situation.destroy
-      respond_to do |format|
-        format.html { redirect_to situations_url, notice: 'Situation was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      redirect_to "/situations"
+      #respond_to do |format|
+      #  format.html { redirect_to situations_url, notice: 'Situation was successfully destroyed.' }
+      #  format.json { head :no_content }
+      #end
   end
 
   private
@@ -90,6 +91,9 @@ class SituationsController < ApplicationController
       if logged_in?
       @user = current_user
       @situation = @user.situations.find(params[:id])
+      elsif
+      @user = current_user
+        redirect_to "/situations"
       else
         redirect_to "/"
       end

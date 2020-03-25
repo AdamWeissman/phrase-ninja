@@ -17,10 +17,14 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#google_auth'
   get 'auth/failure', to: redirect('/')
 
-  #resources :phrase_scores
-  resources :users, only: [:new, :create]
-  resources :situations, only: [:index, :new, :create, :destroy]
 
+  resources :users, only: [:new, :create]
+  resources :situations, only: [:index, :new, :create, :edit, :destroy]
+
+  #manual routing for delete since there will not be a show page for situations
+  get '/situations/:id' => 'situations#destroy'
+
+  #resources :phrase_scores
   #resources :phrases, only: [:index, :edit, :delete]
 
   #namespace :situations do
