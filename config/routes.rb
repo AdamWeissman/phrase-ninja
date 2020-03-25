@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   resources :situations do
     resources :phrases, only: [:index, :edit, :update, :destroy, :new, :create]
   end
+
+  get '/situations/:id/phrase/:id/edit' => 'situations#edit'
+  get '/situations/:id/phrase/:id' => 'phrases#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   #get '*path' => redirect('/')

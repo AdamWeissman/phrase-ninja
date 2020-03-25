@@ -12,11 +12,11 @@
   </thead>
 
   <tbody>
-    <% @phrasesss.each do |phrase| %>
+    <% @phrases.each do |phrase| %>
       <tr>
         <td><%= phrase.english %></td>
         <td><%= phrase.category %></td>
-        <td><%= link_to 'Edit', edit_situation_phrase_path(phrase) %></td>
+        <td><%= link_to 'Edit Phrase', edit_situation_phrase_path(@situation.id, phrase.id) %></td>
         <td><%= link_to 'Destroy', phrase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

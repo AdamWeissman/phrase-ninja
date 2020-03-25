@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, only: [:edit, :update, :destroy, :new, :create]
+  before_action :set_phrase, only: [:edit, :update, :destroy, :new, :create, :show]
 
   # GET /phrases
   # GET /phrases.json
@@ -7,7 +7,7 @@ class PhrasesController < ApplicationController
     #if params[:situation_id]
     if logged_in?
       @user = current_user
-      @situation = @user.situations.find_by_id(params[:id])
+      @situation = @user.situations.find_by(params[:situation_id])
       @phrases = @situation.phrases.all
     else
       redirect_to '/'
@@ -27,8 +27,9 @@ class PhrasesController < ApplicationController
     @phrase = Phrase.new
   end
 
-  # GET /phrases/1/edit
+
   def edit
+
   end
 
   # POST /phrases
@@ -65,16 +66,25 @@ class PhrasesController < ApplicationController
   # DELETE /phrases/1.json
   def destroy
     @phrase.destroy
-    respond_to do |format|
-      format.html { redirect_to phrases_url, notice: 'Phrase was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to "/situation/:id/phrases"
+    #respond_to do |format|
+    #  format.html { redirect_to phrases_url, notice: 'Phrase was successfully destroyed.' }
+    #  format.json { head :no_content }
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_phrase
-      @phrase = Phrase.find(params[:id])
+      if logged_in?
+        @user = current_user
+        @situation = @user.situations.find_by(params[:situation_id])
+        @phrase = @situation.phrases.find(params[:id])
+      elsif
+        @user = current_user
+          redirect_to "/situations"
+      else
+        redirect_to "/"
+      end
     end
 
     # Only allow a list of trusted parameters through.
