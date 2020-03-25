@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
 
   #resources :phrase_scores
-
-  resources :situations, only: [:index, :new, :create, :edit, :show, :destroy, :patch]
   resources :users, only: [:new, :create]
+  resources :situations, only: [:index, :new, :create, :destroy]
+
   #resources :phrases, only: [:index, :edit, :delete]
 
   #namespace :situations do

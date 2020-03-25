@@ -18,7 +18,7 @@
         <td><center><%= check_box_tag 'activated[]', situation.studying_now %><center></td>
         <td>  </td>
         <td><%= situation.name %></td>
-        <td><center><%= link_to 'EDIT', edit_situation_path(situation) %></center></td>
+        <td><center><%= link_to 'EDIT TITLE', edit_situation_path(situation) %></center></td>
         <td><center><%= link_to 'DELETE', situation, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
       </tr>
     <% end %>
