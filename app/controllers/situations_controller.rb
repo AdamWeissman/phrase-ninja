@@ -1,5 +1,5 @@
 class SituationsController < ApplicationController
-  before_action :set_situation, only: [:show, :edit, :update, :destroy]
+  before_action :set_situation, only: [:show, :update, :destroy]
 
   # GET /situations
   # GET /situations.json
@@ -14,8 +14,8 @@ class SituationsController < ApplicationController
 
   # GET /situations/1
   # GET /situations/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /situations/new
   def new
@@ -29,6 +29,7 @@ class SituationsController < ApplicationController
 
   # GET /situations/1/edit
   def edit
+
   end
 
   # POST /situations
@@ -60,25 +61,30 @@ class SituationsController < ApplicationController
 
   # PATCH/PUT /situations/1
   # PATCH/PUT /situations/1.json
-  def update
-    respond_to do |format|
-      if @situation.update(situation_params)
-        format.html { redirect_to @situation, notice: 'Situation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @situation }
-      else
-        format.html { render :edit }
-        format.json { render json: @situation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #def update
+  #  respond_to do |format|
+  #    if @situation.update(situation_params)
+  #      format.html { redirect_to @situation, notice: 'Situation was successfully updated.' }
+  #      format.json { render :show, status: :ok, location: @situation }
+  #    else
+  #      format.html { render :edit }
+  #      format.json { render json: @situation.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
 
   # DELETE /situations/1
   # DELETE /situations/1.json
   def destroy
-    @situation.destroy
-    respond_to do |format|
-      format.html { redirect_to situations_url, notice: 'Situation was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @user = current_user
+      @situation.destroy
+      respond_to do |format|
+        format.html { redirect_to situations_url, notice: 'Situation was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to "/"
     end
   end
 

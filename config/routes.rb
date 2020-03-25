@@ -21,9 +21,11 @@ Rails.application.routes.draw do
 
   resources :situations, only: [:index, :new, :create, :edit, :destroy, :patch]
   resources :users, only: [:new, :create]
-  resources :phrases, only: [:index, :show]
+  #resources :phrases, only: [:index, :edit, :delete]
 
-
+  #namespace :situations do
+  #  resources :phrases, only: [:index, :edit, :delete]
+  #end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   #get '*path' => redirect('/')
