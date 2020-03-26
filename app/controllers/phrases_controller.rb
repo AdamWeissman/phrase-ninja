@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, only: [:edit, :update, :destroy, :new, :create, :show]
+  before_action :set_phrase
 
   def index
     if logged_in?
@@ -18,6 +18,7 @@ class PhrasesController < ApplicationController
   end
 
   def show
+    @phrases = @situation.phrases
   end
 
   def new
@@ -66,8 +67,8 @@ class PhrasesController < ApplicationController
     def set_phrase
       if logged_in?
         @user = current_user
-        @situation = @user.situations.find_by(params[:situation_id])
-        @phrase = @situation.phrases.find_by(params[:phrase_id])
+        @situation = @user.situations.find(params[:situation_id])
+        @phrase = @situation.phrases.find(params[:id])
       elsif
         @user = current_user
           redirect_to "/situations"

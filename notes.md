@@ -1,3 +1,13 @@
+ON 3/26 working on
+
+edit.html.erb
+phrases_controller.rb
+and phrase index.html.erb
+and routes
+
+need to figure out nested form_with
+
+
 For 3/24
 
 Get the situations "show" page to redirect to each respective nested index of phrases for the given situation.
