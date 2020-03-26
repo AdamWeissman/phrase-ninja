@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:new, :create]
-  resources :situations, only: [:index, :new, :create, :edit, :update, :destroy, :show]
 
   #manual routing for delete since there will not be a show page for situations
   get '/situations/:id/destroy' => 'situations#destroy'
@@ -27,8 +26,9 @@ Rails.application.routes.draw do
   #resources :phrase_scores
   #resources :phrases, only: [:index, :edit, :update, :destroy, :new, :create]
 
+  #use show to redirect to index -- can also use ",except" instead of only
   resources :situations do
-    resources :phrases, only: [:index, :edit, :update, :destroy, :new, :create]
+    resources :phrases
   end
 
   get '/situations/:id/phrase/:id/edit' => 'situations#edit'

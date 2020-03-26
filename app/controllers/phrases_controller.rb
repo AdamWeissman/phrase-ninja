@@ -4,8 +4,14 @@ class PhrasesController < ApplicationController
   def index
     if logged_in?
       @user = current_user
-      @situation = @user.situations.find_by(params[:situation_id])
-      @phrases = @situation.phrases.all
+      @situation = @user.situations.find(params[:situation_id])
+
+      # Situation.find_by_id(params[:id])
+      # Situation.find_by_title(params[:title])
+      # Situation.find_by(params[:situation_id])
+      # Situation.find(params[:id])
+
+      @phrases = @situation.phrases
     else
       redirect_to '/'
     end
