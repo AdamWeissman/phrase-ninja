@@ -1,30 +1,30 @@
-<h1>Editing Phrase</h1>
-<%= binding.pry %>
+<center><h1>Editing Phrase</h1>
 
-<%= form_with(url: "/search", method: "edit") |form| %>
-  <% if phrase.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(phrase.errors.count, "error") %> prohibited this phrase from being saved:</h2>
+<%= form_for ([@situation, @phrase]) do |f| %>
+<% if @phrase.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(phrase.errors.count, "error") %> prohibited this phrase from being saved:</h2>
 
-      <ul>
-        <% phrase.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :english %>
-    <%= form.text_area :english %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <ul>
+      <% phrase.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>
+
+<div class="field">
+  <%= f.label :category, "CHANGE THE CATEGORY" %>
+  <%= f.text_field :category, size: 34 %>
+</div>
+
+<div class="field">
+  <%= f.label :english, "CHANGE THE PHRASE" %>
+  <%= f.text_field :english, size: 89 %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+</center>

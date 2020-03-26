@@ -5,12 +5,6 @@ class PhrasesController < ApplicationController
     if logged_in?
       @user = current_user
       @situation = @user.situations.find(params[:situation_id])
-
-      # Situation.find_by_id(params[:id])
-      # Situation.find_by_title(params[:title])
-      # Situation.find_by(params[:situation_id])
-      # Situation.find(params[:id])
-
       @phrases = @situation.phrases
     else
       redirect_to '/'
@@ -58,7 +52,7 @@ class PhrasesController < ApplicationController
 
 
   def destroy
-    @phrase.destroy
+    @phrase = @situation.phrases.find(params[:id])
     redirect_to "/situation/:id/phrases"
   end
 
@@ -79,6 +73,6 @@ class PhrasesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def phrase_params
-      params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now)
+      params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now, :id)
     end
 end
