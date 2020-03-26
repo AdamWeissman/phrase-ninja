@@ -67,7 +67,7 @@ class PhrasesController < ApplicationController
       if logged_in?
         @user = current_user
         @situation = @user.situations.find_by(params[:situation_id])
-        @phrase = @situation.phrases.find(params[:id])
+        @phrase = @situation.phrases.find_by(params[:phrase_id])
       elsif
         @user = current_user
           redirect_to "/situations"
