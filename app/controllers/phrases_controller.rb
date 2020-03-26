@@ -18,7 +18,7 @@ class PhrasesController < ApplicationController
   end
 
   def show
-    @phrases = @situation.phrases
+    #@phrase = @situation.phrases.find(params[:id])
   end
 
   def new
@@ -27,7 +27,7 @@ class PhrasesController < ApplicationController
 
 
   def edit
-
+    @phrase = @situation.phrases.find(params[:id])
   end
 
   def create
@@ -68,7 +68,7 @@ class PhrasesController < ApplicationController
       if logged_in?
         @user = current_user
         @situation = @user.situations.find(params[:situation_id])
-        @phrase = @situation.phrases.find(params[:id])
+        @phrase = @situation.phrases.find_by(params[:phrase_id]) #this line must stay like this in order for index to populate
       elsif
         @user = current_user
           redirect_to "/situations"
