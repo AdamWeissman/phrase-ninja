@@ -1,10 +1,7 @@
 class PhrasesController < ApplicationController
   before_action :set_phrase, only: [:edit, :update, :destroy, :new, :create, :show]
 
-  # GET /phrases
-  # GET /phrases.json
   def index
-    #if params[:situation_id]
     if logged_in?
       @user = current_user
       @situation = @user.situations.find_by(params[:situation_id])
@@ -12,17 +9,11 @@ class PhrasesController < ApplicationController
     else
       redirect_to '/'
     end
-    #else
-    #  @phrases = Phrase.all
-    #end
   end
 
-  # GET /phrases/1
-  # GET /phrases/1.json
   def show
   end
 
-  # GET /phrases/new
   def new
     @phrase = Phrase.new
   end
@@ -32,8 +23,6 @@ class PhrasesController < ApplicationController
 
   end
 
-  # POST /phrases
-  # POST /phrases.json
   def create
     @phrase = Phrase.new(phrase_params)
 
@@ -48,8 +37,6 @@ class PhrasesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /phrases/1
-  # PATCH/PUT /phrases/1.json
   def update
     respond_to do |format|
       if @phrase.update(phrase_params)
@@ -62,14 +49,10 @@ class PhrasesController < ApplicationController
     end
   end
 
-  # DELETE /phrases/1
-  # DELETE /phrases/1.json
+
   def destroy
     @phrase.destroy
     redirect_to "/situation/:id/phrases"
-    #respond_to do |format|
-    #  format.html { redirect_to phrases_url, notice: 'Phrase was successfully destroyed.' }
-    #  format.json { head :no_content }
   end
 
   private

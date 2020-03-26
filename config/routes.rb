@@ -19,10 +19,10 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:new, :create]
-  resources :situations, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :situations, only: [:index, :new, :create, :edit, :update, :destroy, :show]
 
   #manual routing for delete since there will not be a show page for situations
-  get '/situations/:id' => 'situations#destroy'
+  get '/situations/:id/destroy' => 'situations#destroy'
   get '/situations/:id/edit' => 'situations#edit'
   #resources :phrase_scores
   #resources :phrases, only: [:index, :edit, :update, :destroy, :new, :create]

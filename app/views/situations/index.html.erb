@@ -21,7 +21,7 @@
         <td> <strong>|</strong> </td>
         <td><center><%= link_to 'EDIT SITUATION TITLE', edit_situation_path(situation) %></center></td>
         <td><center><%= link_to 'EDIT PHRASES', situation_phrases_path(situation) %></center></td>
-        <td><center><%= link_to 'DELETE', situation, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+        <td><center><%= link_to 'DELETE', "/situations/#{situation.id}/destroy", method: :destroy %></center></td>
       </tr>
     <% end %>
   </tbody>

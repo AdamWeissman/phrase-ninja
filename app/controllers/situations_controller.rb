@@ -15,7 +15,7 @@ class SituationsController < ApplicationController
   # GET /situations/1
   # GET /situations/1.json
   def show
-
+    redirect_to "/situations"
   end
 
   # GET /situations/new
