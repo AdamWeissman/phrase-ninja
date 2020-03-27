@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase #except: [:destroy]
+  before_action :set_phrase, except: [:destroy]
 
   def index
     if logged_in?
@@ -27,12 +27,21 @@ class PhrasesController < ApplicationController
   end
 
   def destroy
-    binding.pry
-    @phrase = @situation.phrases.find(params[:phrase_id])
-    @phrase.destroy
-    #@situation = Situation.phrases.find_by(@phrase.id)
-    redirect_to "/situations/:id/phrases"
+    if logged_in?
+      @user = current_user
+      #binding.pry
+      @situation = @user.situations.find(params[:situation_id]) #this line must stay like this in order for index to populate
+      @phrase = @situation.phrases.find(params[:phrase_id]) #this line must stay like this in order for index to populate
+      @phrase.destroy
+      redirect_to "/situations/#{@situation.id}/phrases"
+    elsif
+      @user = current_user
+        redirect_to "/situations"
+    else
+      redirect_to "/"
+    end
   end
+
 
   def create
     @phrase = Phrase.new(phrase_params)
@@ -67,7 +76,7 @@ class PhrasesController < ApplicationController
     def set_phrase
       if logged_in?
         @user = current_user
-        binding.pry
+        #binding.pry
         @situation = @user.situations.find(params[:situation_id]) #this line must stay like this in order for index to populate
         @phrase = @situation.phrases.find_by(params[:phrase_id]) #this line must stay like this in order for index to populate
       elsif
