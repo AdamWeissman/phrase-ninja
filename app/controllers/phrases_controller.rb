@@ -6,6 +6,7 @@ class PhrasesController < ApplicationController
       @user = current_user
       @situation = @user.situations.find(params[:situation_id])
       @phrases = @situation.phrases
+      #binding.pry
     else
       redirect_to '/'
     end
@@ -21,7 +22,15 @@ class PhrasesController < ApplicationController
 
 
   def edit
+    #binding.pry
     @phrase = @situation.phrases.find(params[:id])
+  end
+
+  def destroy
+    #binding.pry
+    @phrase.destroy
+    #@situation = Situation.phrases.find_by(@phrase.id)
+    redirect_to "/situations/:id/phrases"
   end
 
   def create
@@ -50,12 +59,7 @@ class PhrasesController < ApplicationController
     end
   end
 
-  def destroy
-    binding.pry
-    #@phrase = Phrases.find(params[:id])
-    #@situation = Situation.phrases.find_by(@phrase.id)
-    #redirect_to "/situation/:id/phrases"
-  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -31,11 +31,9 @@ Rails.application.routes.draw do
 
   # Manual routing for phrase edit that redirects to index
   get "/situations/:id/phrases/:id/edit" => 'phrases#edit'
-  get "/situations/:id/phrases/:id/destroy" => 'phrases#destroy'
-
-  # This route is entered manually on the phrases index view; and the destroy method redirects to the phrases index for a given situation
-  get '/situations/:id/phrase/:id' => 'phrases#destroy'
-
+  get "/situations/:situation_id/phrases/:phrase_id/destroy" => 'phrases#destroy'
+  get "/situations/:situation_id/phrases" => "phrases#index"
+  
   # These routes below are as of yet untested.
   get '/situations/:id/phrase/:id/edit' => 'situations#edit'
 

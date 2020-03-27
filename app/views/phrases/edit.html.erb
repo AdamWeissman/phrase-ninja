@@ -1,4 +1,4 @@
-<center><h1>Editing Phrase</h1>
+<center><h1>MAKE CHANGES TO YOUR PHRASE</h1>
 
 <%= form_for ([@situation, @phrase]) do |f| %>
 <% if @phrase.errors.any? %>
@@ -24,7 +24,8 @@
 </div>
 
 <div class="actions">
-  <%= f.submit %>
+  <%= f.submit "UPDATE"%>
 </div>
 <% end %>
+<%= link_to 'BACK TO PHRASES', situation_phrases_path %>
 </center>
