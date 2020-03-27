@@ -1,11 +1,7 @@
-ON 3/26 working on
-
-edit.html.erb
-phrases_controller.rb
-and phrase index.html.erb
-and routes
-
-need to figure out nested form_with
+Consider phrase score dependencies in the context of updating phrases... not only should an individual phrase score reset, but...
+the composite familiarity ranks for the situation should also reset, or be recalculated
+new phrases added should also recalculate the phrase score rank, and also if phrases are deleted.
+Likewise, if a phrase is deleted, is there a phrase score lingering around or does it not matter because phrase scores exist on their own?
 
 
 For 3/24
