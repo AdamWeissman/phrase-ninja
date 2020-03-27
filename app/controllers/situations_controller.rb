@@ -78,7 +78,7 @@ class SituationsController < ApplicationController
   # DELETE /situations/1.json
   def destroy
       @situation.destroy
-      redirect_to "/situations"
+      redirect_to "/situations", notice: 'Situation was successfully deleted.'
       #respond_to do |format|
       #  format.html { redirect_to situations_url, notice: 'Situation was successfully destroyed.' }
       #  format.json { head :no_content }

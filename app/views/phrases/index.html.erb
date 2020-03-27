@@ -17,7 +17,7 @@
         <td><strong><font color="magenta">This is your original phrase:</font> <%= phrase.english %></strong></td>
         <td><%= phrase.category %></td>
         <td><%= link_to 'EDIT THIS PHRASE', "/situations/#{@situation.id}/phrases/#{phrase.id}/edit", method: :edit %></td>
-        <td><%= link_to 'DESTROY',          "/situations/#{@situation.id}/phrases/#{phrase.id}/destroy", method: :destroy %></td>
+        <td><%= link_to 'DESTROY', "/situations/#{@situation.id}/phrases/#{phrase.id}/destroy", method: :destroy %></td>
       </tr>
       <tr>
         <td><font color="red">Your Phrase translated back into English from Japanese:</font> <%= phrase.english_equivalent %></td>
