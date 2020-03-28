@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, except: [:destroy, :edit, :update, :new, :create]
+  before_action :set_phrase, except: [:destroy, :edit, :update]
 
   def index
     if logged_in?
