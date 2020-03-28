@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, except: [:destroy, :edit, :update]
+  before_action :set_phrase, except: [:destroy, :edit, :update, :new, :create]
 
   def index
     if logged_in?
@@ -18,6 +18,16 @@ class PhrasesController < ApplicationController
 
   def new
     binding.pry
+    if logged_in?
+      @user = current_user
+      @situation = @user.situations.find(params[:situation_id])
+      @phrase = @situation.phrases.new
+    elsif
+      @user = current_user
+        redirect_to "/situations"
+    else
+      redirect_to "/"
+    end
   end
 
 

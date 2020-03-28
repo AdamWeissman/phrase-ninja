@@ -1,28 +1,28 @@
-<%= form_with(model: phrase, local: true) do |form| %>
-  <% if phrase.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(phrase.errors.count, "error") %> prohibited this phrase from being saved:</h2>
+<%= form_for ([@situation, @phrase]) do |f| %>
+<% if @phrase.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(phrase.errors.count, "error") %> prohibited this phrase from being saved:</h2>
 
-      <ul>
-        <% phrase.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <ul>
+      <% phrase.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="field">
-    <%= form.label :category, "CHOOSE YOUR CATEGORY" %>
-    <%= form.text_field :category, size: 34 %>
+    <%= f.label :category, "CHOOSE YOUR CATEGORY" %>
+    <%= f.text_field :category, size: 34 %>
   </div>
 
   <div class="field">
-    <%= form.label :english, "CREATE A NEW PHRASE" %>
-    <%= form.text_area :english, cols: "55", rows: "3" %>
+    <%= f.label :english, "CREATE A NEW PHRASE" %>
+    <%= f.text_area :english, cols: "55", rows: "3" %>
   </div>
 
   <div class="actions">
-    <%= form.submit "ADD THIS PHRASE TO THE SITUATION"%>
+    <%= f.submit "ADD THIS PHRASE TO THE SITUATION"%>
   </div>
 <% end %>
 <center>
