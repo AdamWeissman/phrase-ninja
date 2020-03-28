@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_03_17_105813) do
-
+ 
   create_table "phrase_scores", force: :cascade do |t|
     t.string "familiarity_name"
     t.float "familiarity_name_corresponding_points"
