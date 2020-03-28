@@ -1,4 +1,4 @@
-class PhraseScore < ApplicationRecord
+class Phrasescore < ApplicationRecord
   belongs_to :user
 
   has_many :phrases

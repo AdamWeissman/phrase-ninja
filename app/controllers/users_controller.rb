@@ -25,6 +25,8 @@ class UsersController < ApplicationController
     if @user.save
       #login the user
       session[:user_id] = @user.id
+      binding.pry
+
       redirect_to situations_path
     else
       render :new
