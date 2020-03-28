@@ -30,6 +30,30 @@ class PhrasesController < ApplicationController
     end
   end
 
+  def create
+    binding.pry
+    if logged_in?
+      @user = current_user
+      @situation = @user.situations.find(params[:situation_id])
+      @phrase = @situation.phrases.new
+      redirect_to "/situations/#{@situation.id}/phrases", notice: 'Phrase was successfully created.'
+    elsif
+      @user = current_user
+        redirect_to "/situations/#{@situation.id}/phrases"
+    else
+      redirect_to "/"
+    end
+    #respond_to do |format|
+    #  if @phrase.save
+    #    format.html { redirect_to @phrase, notice: 'Phrase was successfully created.' }
+    #    format.json { render :show, status: :created, location: @phrase }
+    #  else
+    #    format.html { render :new }
+    #    format.json { render json: @phrase.errors, status: :unprocessable_entity }
+    #  end
+    end
+  end
+
 
   def edit
     if logged_in?
@@ -57,15 +81,6 @@ class PhrasesController < ApplicationController
     @phrase.translate
     @phrase.save
     redirect_to "/situations/#{@situation.id}/phrases", notice: 'Phrase was successfully updated.'
-    #respond_to do |format|
-    #  if @phrase.update(phrase_params)
-    #    format.html { redirect_to @phrase, notice: 'Phrase was successfully updated.' }
-    #    format.json { render :show, status: :ok, location: @phrase }
-    #  else
-    #    format.html { render :edit }
-    #    format.json { render json: @phrase.errors, status: :unprocessable_entity }
-    #  end
-    #end
   end
 
 
@@ -86,19 +101,7 @@ class PhrasesController < ApplicationController
   end
 
 
-  def create
-    @phrase = Phrase.new(phrase_params)
 
-    respond_to do |format|
-      if @phrase.save
-        format.html { redirect_to @phrase, notice: 'Phrase was successfully created.' }
-        format.json { render :show, status: :created, location: @phrase }
-      else
-        format.html { render :new }
-        format.json { render json: @phrase.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
 
 
@@ -120,7 +123,7 @@ class PhrasesController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def phrase_params
-      params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now, :id)
-    end
+    #def phrase_params
+    #  params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now, :id)
+    #end
 end
