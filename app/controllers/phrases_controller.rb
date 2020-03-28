@@ -17,7 +17,7 @@ class PhrasesController < ApplicationController
   end
 
   def new
-    binding.pry
+    #binding.pry
     if logged_in?
       @user = current_user
       @situation = @user.situations.find(params[:situation_id])
@@ -35,7 +35,7 @@ class PhrasesController < ApplicationController
     if logged_in?
       @user = current_user
       @situation = @user.situations.find(params[:situation_id])
-      @phrase = @situation.phrases.new
+      @phrase = @situation.phrases.new(phrase_params)
       redirect_to "/situations/#{@situation.id}/phrases", notice: 'Phrase was successfully created.'
     elsif
       @user = current_user
@@ -51,7 +51,7 @@ class PhrasesController < ApplicationController
     #    format.html { render :new }
     #    format.json { render json: @phrase.errors, status: :unprocessable_entity }
     #  end
-    end
+    #end
   end
 
 
@@ -123,7 +123,8 @@ class PhrasesController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    #def phrase_params
-    #  params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now, :id)
-    #end
+    def phrase_params
+      params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now, :id)
+    end
+
 end

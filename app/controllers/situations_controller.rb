@@ -40,7 +40,7 @@ class SituationsController < ApplicationController
       @user = current_user
       @situation = @user.situations.new(situation_params)
       @situation.save
-      this_situation = @situation.id
+      #this_situation = @situation.id
       @situation.whip_up_some_phrases
 
       #respond_to do |format|
