@@ -1,5 +1,5 @@
 class PhrasescoresController < ApplicationController
-  before_action :set_phrase_score, only: [:show, :edit, :update, :destroy]
+  before_action :set_phrasescore, only: [:show, :edit, :update, :destroy]
 
   def index
     @phrasescores = Phrasescore.all
@@ -21,11 +21,11 @@ class PhrasescoresController < ApplicationController
 
     respond_to do |format|
       if @phrasescore.save
-        format.html { redirect_to @phrase_score, notice: 'Phrase score was successfully created.' }
-        format.json { render :show, status: :created, location: @phrase_score }
+        format.html { redirect_to @phrasescore, notice: 'Phrase score was successfully created.' }
+        format.json { render :show, status: :created, location: @phrasescore }
       else
         format.html { render :new }
-        format.json { render json: @phrase_score.errors, status: :unprocessable_entity }
+        format.json { render json: @phrasescore.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +56,7 @@ class PhrasescoresController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_phrase_score
+    def set_phrasescore
       @phrasescore = Phrasescore.find(params[:id])
     end
 

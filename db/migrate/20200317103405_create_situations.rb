@@ -3,9 +3,9 @@ class CreateSituations < ActiveRecord::Migration[6.0]
     create_table :situations do |t|
       t.string :name
 
-      t.float :phrase_score_average
-      t.float :phrase_score_median
-      t.float :phrase_score_mode
+      t.float :score_average
+      t.float :score_median
+      t.float :score_mode
 
       t.text :text_blob_for_phrases
 
