@@ -31,11 +31,14 @@ class PhrasesController < ApplicationController
   end
 
   def create
-    binding.pry
+    #binding.pry
     if logged_in?
       @user = current_user
       @situation = @user.situations.find(params[:situation_id])
-      @phrase = @situation.phrases.new(phrase_params)
+      @phrase = @situation.phrases.new(category: params[:phrase][:category], english: params[:phrase][:english], situation_id: params[:situation_id], phrase_score_id: 6)
+      @phrase.save
+      @phrase.translate
+      @phrase.save
       redirect_to "/situations/#{@situation.id}/phrases", notice: 'Phrase was successfully created.'
     elsif
       @user = current_user
