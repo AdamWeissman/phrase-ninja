@@ -6,7 +6,7 @@ class CreateScores < ActiveRecord::Migration[6.0]
 
       t.boolean :studying_now, default: false
       t.belongs_to :user, null: false, foreign_key: true
-
+ 
       t.timestamps
     end
   end

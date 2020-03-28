@@ -1,2 +1,2 @@
-module PhrasescoresHelper
+module ScoresHelper
 end
