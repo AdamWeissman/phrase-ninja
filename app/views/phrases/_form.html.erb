@@ -1,4 +1,4 @@
-
+<center>
 <%= form_with(model: phrase, local: true) do |form| %>
   <% if phrase.errors.any? %>
     <div id="error_explanation">
@@ -13,16 +13,19 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div class="field">
     <%= form.label :english %>
     <%= form.text_area :english %>
   </div>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </div>
+
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+<center>
