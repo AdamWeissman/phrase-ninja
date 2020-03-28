@@ -25,7 +25,7 @@ class PhraseParser
         the_split = line_splitter(line)
         the_category = the_split[0].strip
         the_phrase = the_split[1].strip
-        the_new_phrase = Phrase.new(category: the_category, english: the_phrase, situation_id: the_situation_id, score_id: 6)
+        the_new_phrase = Phrase.new(category: the_category, english: the_phrase, situation_id: the_situation_id, score_id: 6) #need to interpolate the users actual score
         the_new_phrase.save
         the_new_phrase.translate
         the_new_phrase.save

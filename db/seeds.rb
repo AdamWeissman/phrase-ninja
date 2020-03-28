@@ -24,7 +24,7 @@
 #  PhraseScore.create( familiarity_name: familiarity, familiarity_name_corresponding_points: points)
 #end
 
-phrasescore_list = [
+score_list = [
   [ "I totally know this.", 89.0],
   [ "It's familiar.", 55.0],
   [ "I feel optimistic.", 34.0],
@@ -33,6 +33,6 @@ phrasescore_list = [
   [ "I don't know this at all.", 8.0]
 ]
 
-phrasescore_list.each do |familiarity, points|
-  Phrasescore.create( familiarity_name: familiarity, familiarity_name_corresponding_points: points)
+score_list.each do |familiarity, points|
+  Score.create( familiarity_name: familiarity, familiarity_name_corresponding_points: points)
 end

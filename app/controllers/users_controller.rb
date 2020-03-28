@@ -25,11 +25,25 @@ class UsersController < ApplicationController
     if @user.save
       #login the user
       session[:user_id] = @user.id
-      binding.pry
-
+      generate_basic_scores(@user)
       redirect_to situations_path
     else
       render :new
+    end
+  end
+
+  def generate_basic_scores(user)
+    score_list = [
+      [ "I totally know this.", 89.0],
+      [ "It's familiar.", 55.0],
+      [ "I feel optimistic.", 34.0],
+      [ "I feel pessimistic.", 21.0],
+      [ "It's unfamiliar.", 13.0],
+      [ "I don't know this at all.", 8.0]
+    ]
+
+    score_list.each do |familiarity, points|
+      user.scores.create( familiarity_name: familiarity, familiarity_name_corresponding_points: points)
     end
   end
 
