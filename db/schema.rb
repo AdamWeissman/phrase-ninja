@@ -11,13 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_03_17_105813) do
- 
+
   create_table "phrase_scores", force: :cascade do |t|
     t.string "familiarity_name"
     t.float "familiarity_name_corresponding_points"
     t.boolean "studying_now", default: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_phrase_scores_on_user_id"
   end
 
   create_table "phrases", force: :cascade do |t|
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_105813) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "phrase_scores", "users"
   add_foreign_key "phrases", "phrase_scores"
   add_foreign_key "phrases", "situations"
   add_foreign_key "situations", "users"
