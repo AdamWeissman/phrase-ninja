@@ -19,15 +19,17 @@ The user would also have the opportunity to rerender the list of situations base
 
 -- ABOVE THIS LINE IS NEW --
 A user has many situations. (That’s sorta the main index page)
+A user has many scores
 
 A situation has many phrases
-A situation has many phrase_scores through phrases
+A situation has many scores through phrases
 
 A phrase belongs to a situation
-A phrase belongs to a phrase_score
+A phrase belongs to a scores
 
-A phrase_score has many phrases
-A phrase_score has many situations through phrases
+A score belongs to a user
+A score has many phrases
+A score has many situations through phrases
 
 The phrase belonging to a phrase score sounds awkward but a phrase can’t have more than one score.  Whereas a score “Highly Familiar” or “I don’t know” can have many phrases.
 A situation has many phrase scores which allow a user to search phrases by how familiar they are...

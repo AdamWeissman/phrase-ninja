@@ -2,7 +2,7 @@ class Situation < ApplicationRecord
   belongs_to :user
 
   has_many :phrases, dependent: :destroy
-  has_many :phrase_scores, through: :phrases
+  has_many :scores, through: :phrases
 
   validates :name, presence: true, length: { minimum: 6, maximum: 100 }
   validates :name, uniqueness: true

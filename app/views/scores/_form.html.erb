@@ -1,10 +1,10 @@
-<%= form_with(model: phrase_score, local: true) do |form| %>
-  <% if phrase_score.errors.any? %>
+<%= form_with(model: score, local: true) do |form| %>
+  <% if score.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(phrase_score.errors.count, "error") %> prohibited this phrase_score from being saved:</h2>
+      <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
 
       <ul>
-        <% phrase_score.errors.full_messages.each do |message| %>
+        <% score.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

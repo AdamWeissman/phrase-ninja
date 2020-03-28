@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>English familiarity rank:</strong>
+  <%= @score.english_familiarity_rank %>
+</p>
+
+<p>
+  <strong>Foreign familiarity rank:</strong>
+  <%= @score.foreign_familiarity_rank %>
+</p>
+
+<p>
+  <strong>Studying now:</strong>
+  <%= @score.studying_now %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>

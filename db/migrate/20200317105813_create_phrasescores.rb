@@ -1,6 +1,6 @@
-class CreatePhrasescores < ActiveRecord::Migration[6.0]
+class CreateScores < ActiveRecord::Migration[6.0]
   def change
-    create_table :phrasescores do |t|
+    create_table :scores do |t|
       t.string :familiarity_name
       t.float :familiarity_name_corresponding_points
 

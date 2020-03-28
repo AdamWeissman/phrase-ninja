@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :situations
-  has_many :phrases_scores
+  has_many :scores
 
   has_secure_password
 

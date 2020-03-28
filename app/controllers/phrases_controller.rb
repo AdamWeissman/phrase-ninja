@@ -35,7 +35,7 @@ class PhrasesController < ApplicationController
     if logged_in?
       @user = current_user
       @situation = @user.situations.find(params[:situation_id])
-      @phrase = @situation.phrases.new(category: params[:phrase][:category], english: params[:phrase][:english], situation_id: params[:situation_id], phrase_score_id: 6)
+      @phrase = @situation.phrases.new(category: params[:phrase][:category], english: params[:phrase][:english], situation_id: params[:situation_id], phrasescore_id: 6 )
       @phrase.save
       @phrase.translate
       @phrase.save
@@ -83,7 +83,7 @@ class PhrasesController < ApplicationController
     @phrase.category = @new_category
     @phrase.translate
     @phrase.save
-    @phrase.phrase_score_id = 6
+    @phrase.score_id = 6
     @phrase.save
     redirect_to "/situations/#{@situation.id}/phrases", notice: 'Phrase was successfully updated.'
   end
@@ -129,7 +129,7 @@ class PhrasesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def phrase_params
-      params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrase_score_id, :situation_id, :category, :familiarity_score, :studying_now, :id)
+      params.require(:phrase).permit(:english, :english_equivalent, :japanese, :japanese_phonetic, :phrasescore_id, :situation_id, :category, :familiarity_score, :studying_now, :id)
     end
 
 end
