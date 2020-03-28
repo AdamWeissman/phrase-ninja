@@ -1,3 +1,27 @@
+
+
+
+def study
+  situation_ids = params[:situation_ids]
+
+  phrase_ids = [] #=> [[1,2], [3,4] ] #+> [1,2,3,4]
+  situation_ids.each |id|
+    s = Situation.find(id)
+
+    phrase_ids << s.phrase_ids
+  end
+
+  session[:phrase_ids] = phrase_ids.flatten
+end
+
+
+
+/phrases/1/flashcard #+> session[:phrase_ids] select  a random id
+
+
+FOR 3/28 ABOVE THIS LINE
+
+
 Consider phrase score dependencies in the context of updating phrases... not only should an individual phrase score reset, but...
 the composite familiarity ranks for the situation should also reset, or be recalculated
 new phrases added should also recalculate the phrase score rank, and also if phrases are deleted.
