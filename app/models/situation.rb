@@ -9,7 +9,7 @@ class Situation < ApplicationRecord
 
   def whip_up_some_phrases
     if self.text_blob_for_phrases.present?
-      x = self.user_id
+      x = self.user_id #x is just a test name for the user_id, should rename this later 
       @phrase_parser = PhraseParser.new(text_blob_for_phrases, id, x)
       @phrase_parser.phrases_for_situations
     end
