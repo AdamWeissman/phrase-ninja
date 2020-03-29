@@ -47,9 +47,20 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def flashcard #currently working on this method.
+    if logged_in?
+      @user = current_user
+      @flashcards = @user.study_material
+      render :flashcard
+    else
+      redirect_to '/'
+    end
+  end
+
   private
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :beta_key, :password, :google_token, :google_refresh_token) #password_digest was previously password...if you left as password_digest it would be stored unhashed (or something like that)
+      params.require(:user).permit(:name, :email, :beta_key, :password, :study_material, :google_token, :google_refresh_token) #password_digest was previously password...if you left as password_digest it would be stored unhashed (or something like that)
     end
 end

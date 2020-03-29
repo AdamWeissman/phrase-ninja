@@ -43,3 +43,8 @@
 <%= link_to 'Create a New Situation', new_situation_path %>
 </center>
 <% end %>
+
+<form class="" action="/user/flashcards" method="post">
+  <input type="hidden" value=<%= @user.study_material %>>
+  <label><i>TEST SUBMIT</i></label><br><input type="submit" value="LET'S CONTINUE."></center>
+</form>
