@@ -84,7 +84,7 @@ class PhrasesController < ApplicationController
     @phrase.category = @new_category
     @phrase.translate
     @phrase.save
-    @phrase.score_id = 6
+    @phrase.score_id = @user.brand_new_score(current_user)
     @phrase.save
     redirect_to "/situations/#{@situation.id}/phrases", notice: 'Phrase was successfully updated.'
   end
