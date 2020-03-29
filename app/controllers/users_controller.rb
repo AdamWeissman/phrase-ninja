@@ -47,10 +47,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def flashcard
-    render :flashcard
-  end
-
   private
     # Only allow a list of trusted parameters through.
     def user_params
