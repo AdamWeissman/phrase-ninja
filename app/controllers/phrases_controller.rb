@@ -35,7 +35,8 @@ class PhrasesController < ApplicationController
     if logged_in?
       @user = current_user
       @situation = @user.situations.find(params[:situation_id])
-      @phrase = @situation.phrases.new(category: params[:phrase][:category], english: params[:phrase][:english], situation_id: params[:situation_id], phrasescore_id: 6 )
+      #binding.pry
+      @phrase = @situation.phrases.new(category: params[:phrase][:category], english: params[:phrase][:english], situation_id: params[:situation_id], score_id: @user.brand_new_score(current_user))
       @phrase.save
       @phrase.translate
       @phrase.save

@@ -55,6 +55,8 @@ A score belongs to a user
 A score has many phrases
 A score has many situations through phrases
 
+--
+
 The phrase belonging to a phrase score sounds awkward but a phrase can’t have more than one score.  Whereas a score “Highly Familiar” or “I don’t know” can have many phrases.
 A situation has many phrase scores which allow a user to search phrases by how familiar they are...
 But the phrase score having many situations allows a user to search for situations that will have something like “Mostly Familiar” or “Mostly Unfamiliar” phrases and I’d use a frequency count or something.

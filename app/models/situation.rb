@@ -6,11 +6,6 @@ class Situation < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 6, maximum: 100 }
   validates :name, uniqueness: true
-  #commenting out the tests
-
-  #def testit
-  # @x
-  #end
 
   def whip_up_some_phrases
     if self.text_blob_for_phrases.present?

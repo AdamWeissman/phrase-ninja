@@ -1,4 +1,4 @@
-class PhrasescoresController < ApplicationController
+class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
 
   def index

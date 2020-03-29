@@ -16,4 +16,11 @@ class User < ApplicationRecord
     end
   end
 
+  def brand_new_score(user) #use this with create and update
+    @user = user
+    grab_that_score = @user.scores.all.last
+    @score_id = grab_that_score.id
+    @score_id
+  end
+
 end
