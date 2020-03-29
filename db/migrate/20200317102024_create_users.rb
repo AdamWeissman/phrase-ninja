@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :password_digest
       t.string :beta_key
+      t.text :study_material
 
 #i'm not sure if those google_tokens are actually working or not
       t.string :google_token

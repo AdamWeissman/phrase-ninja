@@ -1,5 +1,11 @@
 
 
+a user will now have a column which will take an array of phrase ids that are selected based on situation.all, this value will be reset every time index is refreshed
+The value will be changed when the checkboxes are clicked, and all the phrase ids for any situation set to boolean true will be passed along to the column.
+
+
+Unable to implement pseudocode below... trying at a database solution above.
+
 
 def study
   situation_ids = params[:situation_ids]
@@ -13,8 +19,6 @@ def study
 
   session[:phrase_ids] = phrase_ids.flatten
 end
-
-
 
 /phrases/1/flashcard #+> session[:phrase_ids] select  a random id
 
