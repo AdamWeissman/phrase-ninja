@@ -16,9 +16,10 @@
   </thead>
 
   <tbody>
-    <% @situations.each do |situation| %>
+    <%= form_with scope: :situation, url: "/users/#{@user.id}/flashcards" do |form| %>
+    <% @situations.each do |situation| %> 
       <tr>
-        <td><center><%= check_box_tag 'activated[]', situation.studying_now %><center></td>
+        <td><center><%= form.check_box situation.studying_now %><center></td>
         <td> <strong>|</strong> </td>
         <td><%= situation.name %></td>
         <td> <strong>|</strong> </td>
@@ -27,6 +28,8 @@
         <td><center><%= link_to 'DELETE', "/situations/#{situation.id}/destroy", method: :destroy %></center></td>
       </tr>
     <% end %>
+    <tr><td><%= form.submit "STUDY" %></td> <td></td> <td></td> <td></td> <td></td></tr>
+  <% end %>
   </tbody>
 
 The situation checkbox submit should do two things:
@@ -37,10 +40,6 @@ The situation checkbox submit should do two things:
 
 </center>
 
-<%= form_with scope: :situation, url: "/users/#{@user.id}/flashcards" do |form| %>
-  <%= form.check_box :studying_now {} %>
-  <%= form.submit "CLICK HERE" %>
-<% end %>
 
 <br>
 <center>
