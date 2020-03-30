@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
 
   #NEED TO SETUP THE FOLLOWING ...
+  get '/users/:id/flashcards' => "scores#index"
   #Routes to Select Scores (this should mimic the situaton index checkboxes)... this should be on scores controller
   #Routes to flashcard_first_view
   #Routes to flashcard_with_score

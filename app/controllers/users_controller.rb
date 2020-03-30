@@ -48,16 +48,6 @@ class UsersController < ApplicationController
   end
 
 
-  def flashcard #currently working on this method.
-    if logged_in?
-      @user = current_user
-      @flashcards = @user.study_material
-      render :flashcard
-    else
-      redirect_to '/'
-    end
-  end
-
   private
     # Only allow a list of trusted parameters through.
     def user_params

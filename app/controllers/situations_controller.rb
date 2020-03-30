@@ -7,7 +7,6 @@ class SituationsController < ApplicationController
     if logged_in?
       @user = current_user
       @situations = @user.situations.all
-      @user.study_material = "Nothing to see here"
     else
       redirect_to '/'
     end

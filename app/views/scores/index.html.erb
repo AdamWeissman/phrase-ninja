@@ -1,31 +1,26 @@
-<p id="notice"><%= notice %></p>
+<center><p id="notice"><%= notice %></p>
 
 <h1>Scores</h1>
 
 <table>
   <thead>
     <tr>
-      <th>English familiarity rank</th>
-      <th>Foreign familiarity rank</th>
-      <th>Studying now</th>
-      <th colspan="3"></th>
+      <th><center>Study</center></th>
+      <th><center>Familiarity Name</center></th>
+      <th><center>Point Value</center></th>
+      <th><center>Studying now</center></th>
     </tr>
   </thead>
-
   <tbody>
     <% @scores.each do |score| %>
       <tr>
-        <td><%= score.english_familiarity_rank %></td>
-        <td><%= score.foreign_familiarity_rank %></td>
-        <td><%= score.studying_now %></td>
-        <td><%= link_to 'Show', score %></td>
-        <td><%= link_to 'Edit', edit_score_path(score) %></td>
-        <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><center><%= check_box_tag 'activated[]', score.studying_now %><center></td>
+        <td><%= score.familiarity_name %></td>
+        <td><center><%= score.familiarity_name_corresponding_points %></center></td>
+        <td><center><%= score.studying_now %></center></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Phrase Score', new_score_path %>

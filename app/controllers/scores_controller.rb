@@ -1,8 +1,15 @@
 class ScoresController < ApplicationController
-  before_action :set_score, only: [:show, :edit, :update, :destroy]
 
   def index
-    @scores = Score.all
+    if logged_in?
+      @user = current_user
+      @scores = @user.scores.all
+    elsif
+      @user = current_user
+        redirect_to "/situations"
+    else
+      redirect_to "/"
+    end
   end
 
   def show
@@ -52,11 +59,6 @@ class ScoresController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_score
-      @score = Score.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def score_params
       params.require(:score).permit(:familiarity_name, :familiarity_name_corresponding_points, :studying_now)
