@@ -3,6 +3,7 @@ class ScoresController < ApplicationController
 #this will essentially be the flashcards controller
 
   def index
+    binding.pry
     if logged_in?
       @user = current_user
       @situations = @user.situations.all

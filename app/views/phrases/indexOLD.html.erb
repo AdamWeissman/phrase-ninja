@@ -1,0 +1,46 @@
+<center><p id="notice"><%= notice %></p></center>
+<center>
+<h1>Your Phrases for "<%= @situation.name %>"</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Your Data</th>
+      <th>Category</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @phrases.each do |phrase| %>
+      <tr>
+        <td><strong><font color="magenta">This is your original phrase:</font> <%= phrase.english %></strong></td>
+        <td><%= phrase.category %></td>
+        <td><%= link_to 'EDIT THIS PHRASE', "/situations/#{@situation.id}/phrases/#{phrase.id}/edit", method: :edit %></td>
+        <td><%= link_to 'DESTROY', "/situations/#{@situation.id}/phrases/#{phrase.id}/destroy", method: :destroy %></td>
+      </tr>
+      <tr>
+        <td><font color="red">Your Phrase translated back into English from Japanese:</font> <%= phrase.english_equivalent %></td>
+      </tr>
+      <tr>
+        <td><font color="red">The phonetic pronunciation of Japanese:</font> <%= phrase.japanese_phonetic %></td>
+      </tr>
+      <tr>
+        <td>
+          <font color="red">Your phrase in Japanese:</font> <%= phrase.japanese %></td>
+      </tr>
+      <tr>
+        <td bgcolor="#FF0000"> </td>
+        <td bgcolor="#FF0000"> </td>
+        <td bgcolor="#FF0000"> </td>
+        <td bgcolor="#FF0000"> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</center>
+
+<center>
+<%= link_to 'Create a New Phrase', new_situation_phrase_path %>
+</center>
