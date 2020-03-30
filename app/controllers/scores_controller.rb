@@ -1,7 +1,7 @@
 class ScoresController < ApplicationController
 #before_action :set_user, only: [:index]
 #this will essentially be the flashcards controller
-
+skip_before_action :verify_authenticity_token
 
   def index
     if logged_in?
