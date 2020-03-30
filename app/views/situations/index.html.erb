@@ -37,6 +37,11 @@ The situation checkbox submit should do two things:
 
 </center>
 
+<%= form_with scope: :situation, url: "/users/#{@user.id}/flashcards" do |form| %>
+  <%= form.check_box :studying_now %>
+  <%= form.submit "CLICK HERE" %>
+<% end %>
+
 <br>
 <center>
 <%= link_to 'Create a New Situation', new_situation_path %>

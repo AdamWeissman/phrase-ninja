@@ -53,27 +53,18 @@ class SituationsController < ApplicationController
     respond_to do |format|
       if @situation.update(situation_params)
         format.html { redirect_to situations_path, notice: 'Situation was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @situation }
       else
         format.html { render :edit }
-        #format.json { render json: @situation.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /situations/1
-  # DELETE /situations/1.json
   def destroy
       @situation.destroy
       redirect_to "/situations", notice: 'Situation was successfully deleted.'
-      #respond_to do |format|
-      #  format.html { redirect_to situations_url, notice: 'Situation was successfully destroyed.' }
-      #  format.json { head :no_content }
-      #end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_situation
       if logged_in?
         @user = current_user
@@ -86,7 +77,6 @@ class SituationsController < ApplicationController
       end
     end
 
-    # Only allow a list of trusted parameters through.
     def situation_params
       params.require(:situation).permit(:name, :studying_now, :phrase_id, :text_blob_for_phrases, :user_id, :score_average, :score_median, :score_mode)
     end
