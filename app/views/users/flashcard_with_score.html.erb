@@ -1,0 +1,15 @@
+<center>
+This one here, flashcard_with_score accomplishes two things.
+
+It reassigns the score_id on the phrase.
+It also adds points to the familiarity_score/rank on the phrase.
+
+When a certain number of points are exceeded, it is dropped from the cycle (studying_now is set to false)
+
+Upon submission, the user is cycled back to flashcard_first_view where logic in the controller causes:
+only the phrases that are true to appear.  In addition to phrases that render on this page, the controller checks:
+-studying_now
+-familiarity_score (it will shuffle all scores below a certain threshhold...) also, if a score_id is set to something
+that is outside the scope of what is currently set to true, it will change the value to false.
+
+<center>

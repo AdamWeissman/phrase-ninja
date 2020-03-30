@@ -1,10 +1,11 @@
 currently working on
-
 routes.rb
-flashcard.html.erb
-situations/index.html.erb view (need to get checkboxes working -- using study_material column on a user.)
-users_controller flashcard method
-situations_controller index method
+index.html.erb for situations
+index.html.erb for scores
+flashcard_first_view.html.erb
+flashcard_with_score.html.erb
+
+need to write methods for reassigning score ids(can use an array, or possibly a hash, although an array is probably easier.)
 
 a user will now have a column which will take an array of phrase ids that are selected based on situation.all, this value will be reset every time index is refreshed
 The value will be changed when the checkboxes are clicked, and all the phrase ids for any situation set to boolean true will be passed along to the column.
