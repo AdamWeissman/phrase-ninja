@@ -7,6 +7,15 @@ class SituationsController < ApplicationController
     if logged_in?
       @user = current_user
       @situations = @user.situations.all
+      binding.pry
+      @situations.each do |situation|
+        sitch_phrases = situation.phrases.all
+        sitch_phrases.each do |phrase|
+          phrase.familiarity_score = 0.0
+          phrase.save
+        end
+      situation.save
+    end
     else
       redirect_to '/'
     end
