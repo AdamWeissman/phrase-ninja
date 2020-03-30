@@ -1,13 +1,10 @@
 class SituationsController < ApplicationController
   before_action :set_situation, only: [:show, :edit, :update, :destroy]
 
-  # GET /situations
-  # GET /situations.json
   def index
     if logged_in?
       @user = current_user
       @situations = @user.situations.all
-      binding.pry
       @situations.each do |situation|
         sitch_phrases = situation.phrases.all
         sitch_phrases.each do |phrase|
@@ -21,13 +18,10 @@ class SituationsController < ApplicationController
     end
   end
 
-  # GET /situations/1
-  # GET /situations/1.json
   def show
     redirect_to "/situations"
   end
 
-  # GET /situations/new
   def new
     if logged_in?
       @user = current_user
@@ -37,13 +31,10 @@ class SituationsController < ApplicationController
     end
   end
 
-  # GET /situations/1/edit
   def edit
     @situation
   end
 
-  # POST /situations
-  # POST /situations.json
   def create
     if logged_in?
       @user = current_user
@@ -52,33 +43,20 @@ class SituationsController < ApplicationController
       #this_situation = @situation.id this appears to have been vestigial code, but if something goes wrong with situations may need to put it back.
       @situation.whip_up_some_phrases
 
-      #respond_to do |format|
-        #if @situation.save
       redirect_to situations_path
-          #format.html { redirect_to @user.situations.all, notice: 'Situation was successfully created.' }
-          #format.json { render :index, status: :created, location: @situation }
-      #  else
-        #  nil
-          #render :html "oops"
-          #format.html { render :new }
-          #format.json { render json: @situation.errors, status: :unprocessable_entity }
-      #  end
-      #end
     else
       redirect_to "/"
     end
   end
 
-  # PATCH/PUT /situations/1
-  # PATCH/PUT /situations/1.json
   def update
     respond_to do |format|
       if @situation.update(situation_params)
         format.html { redirect_to situations_path, notice: 'Situation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @situation }
+        #format.json { render :show, status: :ok, location: @situation }
       else
         format.html { render :edit }
-        format.json { render json: @situation.errors, status: :unprocessable_entity }
+        #format.json { render json: @situation.errors, status: :unprocessable_entity }
       end
     end
   end
