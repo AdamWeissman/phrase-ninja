@@ -1,3 +1,8 @@
+apidock.com/rails/ActionView/Helpers/FormOptionsHelper/collection_select ——
+
+apidock.com/rails/ActionView/Helpers/FormBuilder/collection_select 
+
+
 currently working on
 routes.rb
 index.html.erb for situations

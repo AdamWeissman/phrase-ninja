@@ -15,11 +15,15 @@
     </tr>
   </thead>
 
+<form class="" action="/users/<%=@user.id%>/flashcards" method="post">
+<input type="hidden" name="_method" value="patch">
   <tbody>
-    <%= form_with scope: :situation, url: "/users/#{@user.id}/flashcards" do |form| %>
-    <% @situations.each do |situation| %> 
+    <% @situations.each do |situation| %>
       <tr>
-        <td><center><%= form.check_box situation.studying_now %><center></td>
+
+        <td><center><input type="hidden" name="user[situations][][id]" value=<%=situation.id%>>
+        <input type="checkbox" name="user[situations][][studying_now]" value=<%= situation.studying_now %>>
+        </center></td>
         <td> <strong>|</strong> </td>
         <td><%= situation.name %></td>
         <td> <strong>|</strong> </td>
@@ -28,10 +32,9 @@
         <td><center><%= link_to 'DELETE', "/situations/#{situation.id}/destroy", method: :destroy %></center></td>
       </tr>
     <% end %>
-    <tr><td><%= form.submit "STUDY" %></td> <td></td> <td></td> <td></td> <td></td></tr>
-  <% end %>
+    <tr><td><input type="submit" value="STUDY"></td> <td></td> <td></td> <td></td> <td></td></tr>
   </tbody>
-
+</form>
 The situation checkbox submit should do two things:
 1) make sure it sets booleans to true for each situation.studying_now
 2) make sure it redirect to '/users/:id/flashcards' => "scores#index"
