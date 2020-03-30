@@ -16,12 +16,13 @@
   </thead>
 
 <form class="" action="/users/<%=@user.id%>/flashcards" method="post">
-<input type="hidden" name="_method" value="patch">
+
   <tbody>
     <% @situations.each do |situation| %>
       <tr>
 
-        <td><center><input type="hidden" name="user[situations][][id]" value=<%=situation.id%>>
+        <td>
+          <center><input type="hidden" name="user[situations][][id]" value=<%= situation.id%>>
         <input type="checkbox" name="user[situations][][studying_now]" value=<%= situation.studying_now %>>
         </center></td>
         <td> <strong>|</strong> </td>

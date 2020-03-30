@@ -3,7 +3,7 @@ require "romaji"
 require "romaji/core_ext/string"
 require "tiny_segmenter"
 require "tataki"
-
+<input type="hidden" name="_method" value="patch">
 def translate(something)
   @translator = Google::Cloud::Translate.new version: :v2
   the_translation = @translator.translate something, to: "ja"

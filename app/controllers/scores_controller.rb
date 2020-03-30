@@ -1,9 +1,8 @@
 class ScoresController < ApplicationController
-
+#before_action :set_user, only: [:index]
 #this will essentially be the flashcards controller
 
   def index
-    binding.pry
     if logged_in?
       @user = current_user
       @situations = @user.situations.all
@@ -65,6 +64,12 @@ class ScoresController < ApplicationController
   end
 
   private
+  #def set_user
+  #    @user = current_user
+  #end
+
+
+
     # Only allow a list of trusted parameters through.
     def score_params
       params.require(:score).permit(:familiarity_name, :familiarity_name_corresponding_points, :studying_now)
