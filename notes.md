@@ -10,6 +10,11 @@ index.html.erb for scores
 flashcard_first_view.html.erb
 flashcard_with_score.html.erb
 
+
+ "You could use skip_before_action to skip the :verify_authenticity_token action for that one route, you can add the token to your form, or adjust your form to use helpers (which I can help you with later if you want)"
+
+
+
 need to write methods for reassigning score ids(can use an array, or possibly a hash, although an array is probably easier.)
 
 a user will now have a column which will take an array of phrase ids that are selected based on situation.all, this value will be reset every time index is refreshed

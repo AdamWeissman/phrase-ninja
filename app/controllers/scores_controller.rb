@@ -2,6 +2,7 @@ class ScoresController < ApplicationController
 #before_action :set_user, only: [:index]
 #this will essentially be the flashcards controller
 
+
   def index
     if logged_in?
       @user = current_user

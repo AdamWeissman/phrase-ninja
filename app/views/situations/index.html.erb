@@ -15,8 +15,7 @@
     </tr>
   </thead>
 
-<form class="" action="/users/<%=@user.id%>/flashcards" method="post">
-
+<form class="" action="/users/<%=@user.id%>/flashcards" method="get">
   <tbody>
     <% @situations.each do |situation| %>
       <tr>
