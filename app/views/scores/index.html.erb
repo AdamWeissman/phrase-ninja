@@ -24,3 +24,19 @@
 </table>
 
 <br>
+<table>
+  <thead>
+    <tr>
+      <th>Situation Names for Testing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @situations.each do |s| %>
+      <tr>
+        <td><%= s.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

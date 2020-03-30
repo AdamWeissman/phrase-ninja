@@ -1,8 +1,11 @@
 class ScoresController < ApplicationController
 
+#this will essentially be the flashcards controller
+
   def index
     if logged_in?
       @user = current_user
+      @situations = @user.situations.all
       @scores = @user.scores.all
     elsif
       @user = current_user
@@ -11,6 +14,8 @@ class ScoresController < ApplicationController
       redirect_to "/"
     end
   end
+
+  #nothing below this line is working
 
   def show
   end
