@@ -8,17 +8,25 @@ class ScoresController < ApplicationController
 
   def index
     if logged_in?
-      params.permit!
+      snarf
       binding.pry
       @user = current_user
       @situations = @user.situations.all
       @scores = @user.scores.all
-    elsif
+
+      #writing a method to grab all the situation pairs that need to be updated to studying true
+      #if not set to on, then should set them to false
+
+      elsif
       @user = current_user
         redirect_to "/situations"
     else
       redirect_to "/"
     end
+  end
+
+  def snarf
+    params.permit!
   end
 
   #nothing below this line is working
