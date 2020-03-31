@@ -1,7 +1,5 @@
 class ScoresController < ApplicationController
 
-
-
 #before_action :set_user, only: [:index]
 #this will essentially be the flashcards controller
 #skip_before_action :verify_authenticity_token
@@ -24,18 +22,30 @@ class ScoresController < ApplicationController
   end
 
   def snarf
-    the_situations = []
-    the_booleans = []
+    #binding.pry
+    #the_situations = []
+    #the_booleans = []
 
-    params.permit!
+    #params.permit!
     params[:user][:situations].each do |s|
-      the_situations << s[:id]
+      situation = Situation.find(s[:id])
       if s[:studying_now] == "on"
-        the_booleans << true
+        situation.studying_now = true
+        situation.save
       else
-        the_booleans << false
+        situation.studying_now = false
+        situation.save
       end
-      @situations.map {|x| x.studying_now = false}
+
+      #the_situations << s[:id]
+      #if s[:studying_now] == "on"
+        #the_booleans << true
+    #  else
+        #the_booleans << false
+      #end
+      #@situations.map do |x|
+        #x.studying_now = true
+      #end
     end
 
   end
@@ -101,5 +111,9 @@ class ScoresController < ApplicationController
     # Only allow a list of trusted parameters through.
     def score_params
       params.require(:score).permit(:familiarity_name, :familiarity_name_corresponding_points, :studying_now)
+    end
+
+    def study_params
+
     end
 end
