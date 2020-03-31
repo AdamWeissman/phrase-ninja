@@ -1,3 +1,14 @@
+
+def add(num)
+  num + num
+end
+
+def add(num):
+  return num + num
+
+
+
+
 apidock.com/rails/ActionView/Helpers/FormOptionsHelper/collection_select ——
 
 apidock.com/rails/ActionView/Helpers/FormBuilder/collection_select 

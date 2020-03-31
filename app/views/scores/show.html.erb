@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<center><p id="notice"><%= notice %></p>
+
+<h1>THE CURRENT ROTATION CYCLE FEATURES</h1>
+
+<% @situations.each do |s| %>
+  <% if s.studying_now == true %>
+    <center><tr>
+      <td><center><%= s.name %></center></td>
+    </tr></center>
+  <% else %>
+    <% next %>
+  <% end %>
+<% end %>
 
 <p>
-  <strong>English familiarity rank:</strong>
-  <%= @score.english_familiarity_rank %>
+  <% @scores.each do |s| %>
+    <% if s.studying_now == true %>
+      <center><tr>
+        <td><center><%= s.familiarity_name %></center></td>
+      </tr></center>
+    <% else %>
+      <% next %>
+    <% end %>
+  <% end %>
 </p>
-
-<p>
-  <strong>Foreign familiarity rank:</strong>
-  <%= @score.foreign_familiarity_rank %>
-</p>
-
-<p>
-  <strong>Studying now:</strong>
-  <%= @score.studying_now %>
-</p>
-
-<%= link_to 'Edit', edit_score_path(@score) %> |
-<%= link_to 'Back', scores_path %>
+</center>
