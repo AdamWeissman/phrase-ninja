@@ -15,14 +15,15 @@
     </tr>
   </thead>
 
-<form class="" action="/users/<%=@user.id%>/flashcards" method="post">
+<form action="/users/<%=@user.id%>/flashcards" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value=<%=form_authenticity_token%>>
   <tbody>
     <% @situations.each do |situation| %>
       <tr>
 
         <td>
           <center><input type="hidden" name="user[situations][][id]" value=<%= situation.id%>>
-        <input type="checkbox" name="user[situations][][studying_now]" value=<%= situation.studying_now %>>
+        <input type="checkbox" name="user[situations][][studying_now]" unchecked="false" checked="true">
         </center></td>
         <td> <strong>|</strong> </td>
         <td><%= situation.name %></td>

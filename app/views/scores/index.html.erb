@@ -32,9 +32,13 @@
   </thead>
   <tbody>
     <% @situations.each do |s| %>
-      <tr>
-        <td><%= s.name %></td>
-      </tr>
+      <% if s.studying_now == true %>
+        <tr>
+          <td><%= s.name %></td>
+        </tr>
+      <% else %>
+        <% next %>
+      <% end %>
     <% end %>
   </tbody>
 </table>
