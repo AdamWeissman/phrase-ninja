@@ -9,7 +9,6 @@ class ScoresController < ApplicationController
   def index
     if logged_in?
       snarf
-      binding.pry
       @user = current_user
       @situations = @user.situations.all
       @scores = @user.scores.all
@@ -26,7 +25,19 @@ class ScoresController < ApplicationController
   end
 
   def snarf
+    the_situations = []
+    the_booleans = []
+
     params.permit!
+    params[:user][:situations].each do |s|
+      the_situations << s[:id]
+      if s[:studying_now] == "on"
+        the_booleans << true
+      else
+        the_booleans << false
+      end
+    end
+    binding.pry
   end
 
   #nothing below this line is working
