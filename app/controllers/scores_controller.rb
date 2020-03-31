@@ -38,6 +38,7 @@ class ScoresController < ApplicationController
       @situations = @user.situations.all
       @scores = @user.scores.all
       studying_switches_for_scores
+      @phrases = the_lineup
     elsif
       @user = current_user
         redirect_to "/users/:id/flashcards"
@@ -45,6 +46,20 @@ class ScoresController < ApplicationController
       redirect_to "/"
     end
   end
+
+  def the_lineup
+    the_situations = []
+    @situations.each do |s|
+      if s.studying_now == true
+        the_situation << s.id
+      else
+        next
+      end
+    end
+
+      #need to do same for scores, grab the code from my show page.
+  end
+
 
   def studying_switches_for_scores
     params.permit!
