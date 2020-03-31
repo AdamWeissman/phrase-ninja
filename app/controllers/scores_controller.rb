@@ -8,11 +8,10 @@ class ScoresController < ApplicationController
 
   def index
     if logged_in?
-      snarf
       @user = current_user
       @situations = @user.situations.all
       @scores = @user.scores.all
-
+      snarf
       #writing a method to grab all the situation pairs that need to be updated to studying true
       #if not set to on, then should set them to false
 
@@ -36,8 +35,9 @@ class ScoresController < ApplicationController
       else
         the_booleans << false
       end
+      @situations.map {|x| x.studying_now = false}
     end
-    binding.pry
+
   end
 
   #nothing below this line is working
