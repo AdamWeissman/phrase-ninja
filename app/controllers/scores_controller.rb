@@ -49,17 +49,27 @@ class ScoresController < ApplicationController
 
   def the_lineup
     the_situations = []
+    the_scores = []
     @situations.each do |s|
       if s.studying_now == true
-        the_situation << s.id
+        the_situations << s.id
       else
         next
       end
     end
-
-      #need to do same for scores, grab the code from my show page.
+    @scores.each do |s|
+      if s.studying_now == true
+        the_scores << s.id
+      else
+        next
+      end
+    end
+  #need to create @phrases based on:
+    #the_situations
+    #and also...
+      #a given score.phrases.all
+      # NOTE: the edit page, when user selects their familiarity will alter the score and also add a value
   end
-
 
   def studying_switches_for_scores
     params.permit!
