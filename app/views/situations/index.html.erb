@@ -16,6 +16,7 @@
   </thead>
 
 <form action="/users/<%=@user.id%>/flashcards" accept-charset="UTF-8" method="post">
+
   <input type="hidden" name="authenticity_token" value=<%=form_authenticity_token%>>
   <tbody>
     <% @situations.each do |situation| %>
