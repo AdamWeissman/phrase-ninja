@@ -1,5 +1,5 @@
 class ScoresController < ApplicationController
-
+include ScoresHelper
 #before_action :set_user, only: [:index]
 #this will essentially be the flashcards controller
 #skip_before_action :verify_authenticity_token
@@ -34,9 +34,6 @@ class ScoresController < ApplicationController
       redirect_to "/"
     end
   end
-
-
-
 
 
   def new
