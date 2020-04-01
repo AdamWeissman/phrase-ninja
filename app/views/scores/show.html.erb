@@ -16,9 +16,6 @@
   <strong>Japanese</strong>
   <%= @phrase.japanese %>
 </p>
-
-<br>
-links to...
-get '/users/:id/flashcards/study_time_show_answer' => "scores#edit"
+<%= link_to 'SHOW SOLUTION', "/users/#{@user.id}/flashcards/#{@phrase.id}/study_time_show_answer", method: :get %>
 <br>
 </center>
