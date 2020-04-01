@@ -1,21 +1,13 @@
 <center><p id="notice"><%= notice %></p>
-
-<h1>THE CURRENT ROTATION CYCLE FEATURES</h1>
-
-<p>
-  <strong>English:</strong>
-  <%= @phrase.english %>
-</p>
-
-<p>
-  <strong>English Equivalent:</strong>
-  <%= @phrase.english_equivalent %>
-</p>
-
-<p>
-  <strong>Japanese</strong>
-  <%= @phrase.japanese %>
-</p>
-<%= link_to 'SHOW SOLUTION', "/users/#{@user.id}/flashcards/#{@phrase.id}/study_time_show_answer", method: :get %>
+<br>
+<br>
+<h1><%= @phrase.category %></h1>
+<br>
+  <h2>English: <%= @phrase.english %></h2>
+  <h2>English Equivalent: <%= @phrase.english_equivalent %></h2>
+  <h2>Japanese: <%= @phrase.japanese %></h2>
+  <br>
+  <br>
+  <h2><%= link_to 'SHOW SOLUTION', "/users/#{@user.id}/flashcards/#{@phrase.id}/study_time_show_answer", method: :get %></h2>
 <br>
 </center>

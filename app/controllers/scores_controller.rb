@@ -41,7 +41,16 @@ include ScoresHelper
 
 
   def edit
-    #this will populate a phrase flash card with the solution
+    if logged_in?
+      @user = current_user
+      params.permit!
+      @phrase = Phrase.find(params[:phrase_id])
+    elsif
+      @user = current_user
+        redirect_to "/users/:id/flashcards"
+    else
+      redirect_to "/"
+    end
   end
 
   #def create

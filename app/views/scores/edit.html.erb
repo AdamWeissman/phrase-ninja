@@ -1,13 +1,18 @@
 <center><p id="notice"><%= notice %></p>
-
-<h1>SHOWS SOLUTION</h1>
-
-this should populate...<br>
-phrase.english"<br>
-phrase.english_equivalent<br>
-phrase.japanese<br>
-phrase.japanese_phonetic; shows this in red<br>
 <br>
+<br>
+<h1><%= @phrase.category %></h1>
+<br>
+  <h2>English: <%= @phrase.english %></h2>
+  <h2>English Equivalent: <%= @phrase.english_equivalent %></h2>
+  <h2>Japanese: <%= @phrase.japanese %></h2>
+  <br>
+  <br>
+  <h2><font color="red">SOLUTION</font></h2>
+  <h2>Japanese Phonetic: <%= @phrase.japanese_phonetic %></h2>
+  <br>
+  </center>
+
 basic form TO CHOOSE THE NEW RANK that posts to the update route (working in flashcards zone in routes.rb) ... and redirects back to show.
 patch '/users/:id/flashcards/study_time_rank_familiarity' => "scores#update" #this will redirect to original show, but scores id and phrases familiarity rank should be updated in the update method.
 <br>
