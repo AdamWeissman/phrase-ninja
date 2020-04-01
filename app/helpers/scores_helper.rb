@@ -48,7 +48,7 @@ module ScoresHelper
     #a phrase should have the correct id from situations array
     #a phrase should have the correct id from scores array
     #a phrase should also have a score less than the trip wire
-      #will need to assign familiarity scores
+
       #phrase.familiarity score should autoset at situations home
   end
 

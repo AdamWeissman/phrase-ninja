@@ -59,15 +59,16 @@ include ScoresHelper
 
   def update
     #this is where there user selects the score
-    respond_to do |format|
-      if @score.update(phrasescore_params)
-        format.html { redirect_to @score, notice: 'Score was successfully updated.' }
-        format.json { render :show, status: :ok, location: @phrasescore }
-      else
-        format.html { render :edit }
-        format.json { render json: @score.errors, status: :unprocessable_entity }
-      end
-    end
+    #will need to assign familiarity scores and reassign score ids
+    #respond_to do |format|
+    #  if @score.update(phrasescore_params)
+    #    format.html { redirect_to @score, notice: 'Score was successfully updated.' }
+    #    format.json { render :show, status: :ok, location: @phrasescore }
+    #  else
+    #    format.html { render :edit }
+    #    format.json { render json: @score.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
 
@@ -91,7 +92,4 @@ include ScoresHelper
       params.require(:score).permit(:familiarity_name, :familiarity_name_corresponding_points, :studying_now)
     end
 
-    def study_params
-
-    end
 end
