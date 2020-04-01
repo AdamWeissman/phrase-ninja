@@ -2,24 +2,11 @@
 
 <h1>THE CURRENT ROTATION CYCLE FEATURES</h1>
 
-<% @situations.each do |s| %>
-  <% if s.studying_now == true %>
-    <center><tr>
-      <td><center><%= s.name %></center></td>
-    </tr></center>
-  <% else %>
-    <% next %>
-  <% end %>
-<% end %>
-
-<br><br>
-  <% @scores.each do |s| %>
-    <% if s.studying_now == true %>
-      <center><tr>
-        <td><center><%= s.familiarity_name %></center></td>
-      </tr></center>
-    <% else %>
-      <% next %>
-    <% end %>
-  <% end %>
-</center>
+this should populate...<br>
+phrase.english"<br>
+phrase.english_equivalent<br>
+phrase.japanese<br>
+<br>
+links to...
+get '/users/:id/flashcards/study_time_show_answer' => "scores#edit"
+<br>

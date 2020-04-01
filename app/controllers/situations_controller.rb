@@ -8,7 +8,7 @@ class SituationsController < ApplicationController
       @situations.each do |situation|
         sitch_phrases = situation.phrases.all
         sitch_phrases.each do |phrase|
-          binding.pry
+          #binding.pry
           phrase.familiarity_score = phrase.score.familiarity_name_corresponding_points
           phrase.save
         end

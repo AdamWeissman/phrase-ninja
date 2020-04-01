@@ -62,4 +62,32 @@ skk_converter.to_kana("研究者") # => "けんきゅうしゃ"
 
 alphabet_skk_converter = Tataki::Converter::Combine.new(Tataki::Converter::Alphabet.new, Tataki::Converter::SkkJisyo.new)
 alphabet_skk_converter.to_kana("X線研究者") # => "robottotaisennf"
+
+
+
+The old code below this line was taken from scores view show.html.erb
+<% @situations.each do |s| %>
+  <% if s.studying_now == true %>
+    <center><tr>
+      <td><center><%= s.name %></center></td>
+    </tr></center>
+  <% else %>
+    <% next %>
+  <% end %>
+<% end %>
+
+<br><br>
+  <% @scores.each do |s| %>
+    <% if s.studying_now == true %>
+      <center><tr>
+        <td><center><%= s.familiarity_name %></center></td>
+      </tr></center>
+    <% else %>
+      <% next %>
+    <% end %>
+  <% end %>
+</center>
+
+
+
 =end
