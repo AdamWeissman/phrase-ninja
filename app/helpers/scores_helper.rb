@@ -28,7 +28,7 @@ module ScoresHelper
     end
   end
 
-  def the_lineup
+  def the_lineup #in short, this returns only phrases that have situations which are selected AND scores (familiarity levels) which have been selected
     the_situations = []
     the_scores = []
     the_phrases = []
@@ -72,6 +72,12 @@ module ScoresHelper
     #a phrase should also have a score less than the trip wire
 
       #phrase.familiarity score should autoset at situations home
+  end
+
+  def grab_that_phrase(phrases)
+    three_lowest_phrases_by_familiarity_score = phrases.min_by(3) {|phrase_object| phrase_object.familiarity_score }
+    random_lowest_phrase = three_lowest_phrases_by_familiarity_score.sample
+    random_lowest_phrase
   end
 
 end
