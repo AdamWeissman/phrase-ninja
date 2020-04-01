@@ -25,6 +25,7 @@ include ScoresHelper
       @scores = @user.scores.all
       studying_switches_for_scores
       @phrases = the_lineup
+      binding.pry
     elsif
       @user = current_user
         redirect_to "/users/:id/flashcards"

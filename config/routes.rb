@@ -35,18 +35,15 @@ Rails.application.routes.draw do
   get "/situations/:situation_id/phrases/:phrase_id/destroy" => 'phrases#destroy'
   get "/situations/:situation_id/phrases" => "phrases#index"
 
-  get '/users/:id/flashcards' => "scores#index"
-  post '/users/:id/flashcards' => "scores#index"
-
-
+  #THIS IS THE BEGINNING OF THE FLASHCARDS LOGIC LOOP, THE ROUTES BELOW ARE IN ORDER
+  #get '/users/:id/flashcards' => "scores#index" #this was vestigial code, I don't seem to need it.
+  post '/users/:id/flashcards' => "scores#index" #the user sees the scores and is allowed to click what they want
   post '/users/:id/flashcards/study_time' => "scores#show" #Routes to flashcard_first view... with unpopulated answer.
 
-  #WORKING ON FLASHCARDS
-  #get '/users/:id/flashcards/study_time' => "scores#show" #Routes to flashcard_solution
-  #get '/users/:id/flashcards/study_time_show_answer' => "scores#edit" #Routes to flashcard_first_view
-  #post '/users/:id/flashcards/study_time_rank_familiarity' => "scores#update" #Routes to flashcard_with_score
+  #get '/users/:id/flashcards/study_time' => "scores#show" #this is vestigial code, but perhaps I'll need it when redirecting from scores update.
+  get '/users/:id/flashcards/study_time_show_answer' => "scores#edit" #Routes to flashcard with solution
+  patch '/users/:id/flashcards/study_time_rank_familiarity' => "scores#update" #Routes to flashcard_with_score
 
-  #put '/users/:id/flashcards' => "scores#index"
   #Routes to Select Scores (this should mimic the situaton index checkboxes)... this should be on scores controller
 
 

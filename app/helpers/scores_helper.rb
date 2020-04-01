@@ -31,6 +31,7 @@ module ScoresHelper
   def the_lineup
     the_situations = []
     the_scores = []
+    the_phrases = []
     @situations.each do |s|
       if s.studying_now == true
         the_situations << s.id
@@ -45,6 +46,27 @@ module ScoresHelper
         next
       end
     end
+
+    the_situations.each do |this_situation_id| #checking situations that are true
+      a_situation = @situations.find(this_situation_id) #a single situation that is true
+
+      the_scores.each do |this_score_id| #checking scores that are true
+        a_score = @scores.find(this_score_id) #a single true score for this iteration
+
+        all_phrases_in_a_situation = a_situation.phrases.all #all the phrases for the relevant situation
+        all_phrases_in_a_situation.each do |this_phrase| #cycling over a given phrase in a true situation
+          if (this_phrase.score_id == a_score.id) && (this_phrase.familiarity_score < 100.0)
+            the_phrases << this_phrase
+          else
+            next
+          end
+        end
+
+      end
+    end
+
+    the_phrases
+
     #a phrase should have the correct id from situations array
     #a phrase should have the correct id from scores array
     #a phrase should also have a score less than the trip wire
