@@ -35,8 +35,6 @@ Rails.application.routes.draw do
   get "/situations/:situation_id/phrases/:phrase_id/destroy" => 'phrases#destroy'
   get "/situations/:situation_id/phrases" => "phrases#index"
 
-
-  #NEED TO SETUP THE FOLLOWING ...
   get '/users/:id/flashcards' => "scores#index"
   post '/users/:id/flashcards' => "scores#index"
 
@@ -44,12 +42,9 @@ Rails.application.routes.draw do
   post '/users/:id/flashcards/study_time' => "scores#show" #Routes to flashcard_first view... with unpopulated answer.
 
   #WORKING ON FLASHCARDS
-  #get '/users/:id/flashcards/study_time' => "scores#show" #Routes to flashcard_first_view
-
-
-  
-  get '/users/:id/flashcards/study_time_show_answer' => "scores#edit" #Routes to flashcard_first_view
-  post '/users/:id/flashcards/study_time_rank_familiarity' => "scores#update" #Routes to flashcard_with_score
+  #get '/users/:id/flashcards/study_time' => "scores#show" #Routes to flashcard_solution
+  #get '/users/:id/flashcards/study_time_show_answer' => "scores#edit" #Routes to flashcard_first_view
+  #post '/users/:id/flashcards/study_time_rank_familiarity' => "scores#update" #Routes to flashcard_with_score
 
   #put '/users/:id/flashcards' => "scores#index"
   #Routes to Select Scores (this should mimic the situaton index checkboxes)... this should be on scores controller

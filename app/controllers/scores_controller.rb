@@ -18,8 +18,6 @@ include ScoresHelper
     end
   end
 
-
-
   def show #this method is for a single flashcard, and works with the studying switches method for scores
     if logged_in?
       @user = current_user
