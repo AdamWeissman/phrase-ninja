@@ -33,12 +33,10 @@
         <td><center><%= link_to 'DELETE', "/situations/#{situation.id}/destroy", method: :destroy %></center></td>
       </tr>
     <% end %>
-    <tr><td><input type="submit" value="STUDY"></td> <td></td> <td></td> <td></td> <td></td></tr>
+    <tr><td><input type="submit" value="STUDY"></td> <td></td> <td></td><td></td><td></td><td></td> <td>
+    <%= link_to 'CREATE NEW', new_situation_path %></td></tr>
   </tbody>
 </form>
-The situation checkbox submit should do two things:
-1) make sure it sets booleans to true for each situation.studying_now
-2) make sure it redirect to '/users/:id/flashcards' => "scores#index"
 
 </table>
 
@@ -46,12 +44,10 @@ The situation checkbox submit should do two things:
 
 
 <br>
-<center>
-<%= link_to 'Create a New Situation', new_situation_path %>
-</center>
+
 
 <% else %>
 <center>
-<%= link_to 'Create a New Situation', new_situation_path %>
+<%= link_to 'CREATE NEW SITUATION', new_situation_path %>
 </center>
 <% end %>

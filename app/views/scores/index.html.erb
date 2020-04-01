@@ -1,14 +1,32 @@
 <center><p id="notice"><%= notice %></p>
 
-<h1>WHAT LEVEL OF FAMILIARITY WOULD YOU LIKE TO STUDY?</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>SITUATIONS CURRENTLY SELECTED FOR STUDY:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @situations.each do |s| %>
+        <% if s.studying_now == true %>
+          <tr>
+            <td><%= s.name %></td>
+          </tr>
+        <% else %>
+          <% next %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
+<br>
+<h3>SELECT THE FAMILIARITY LEVELS YOU WOULD LIKE TO STUDY FOR THE ABOVE SITUATIONS</h3>
+<br>
 <table>
   <thead>
     <tr>
       <th><center>Study</center></th>
       <th><center>Familiarity Name</center></th>
-      <th><center>Point Value</center></th>
-      <th><center>Studying now</center></th>
     </tr>
   </thead>
 
@@ -21,8 +39,6 @@
         <td><center><input type="hidden" name="user[scores][][id]" value=<%= score.id%>>
       <input type="checkbox" name="user[scores][][studying_now]" unchecked="false" checked="true"><center></td>
         <td><%= score.familiarity_name %></td>
-        <td><center><%= score.familiarity_name_corresponding_points %></center></td>
-        <td><center><%= score.studying_now %></center></td>
       </tr>
     <% end %>
     <tr><td><input type="submit" value="STUDY"></td> <td></td> <td></td> <td></td> <td></td></tr>
@@ -30,23 +46,6 @@
 </table>
 
 <br>
-<table>
-  <thead>
-    <tr>
-      <th><h1>THESE ARE THE SITUATIONS THE ABOVE FILTER WILL BE APPLIED TO:</h1></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @situations.each do |s| %>
-      <% if s.studying_now == true %>
-        <center><tr>
-          <td><center><%= s.name %></center></td>
-        </tr></center>
-      <% else %>
-        <% next %>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+
 
 <br>

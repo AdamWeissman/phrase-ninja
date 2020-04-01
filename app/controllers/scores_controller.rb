@@ -71,7 +71,7 @@ class ScoresController < ApplicationController
       # NOTE: the edit page, when user selects their familiarity will alter the score and also add a value
   end
 
-  def studying_switches_for_scores
+  def studying_switches_for_scores #fix this so true values don't persist
     params.permit!
     params[:user][:scores].each do |s|
       score = Score.find(s[:id])
