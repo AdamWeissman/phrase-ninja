@@ -49,7 +49,7 @@ include ScoresHelper
 
   def update
     params.permit!
-    binding.pry
+    #binding.pry
     #if logged_in?
     #  @user = current_user
     #  @situations = @user.situations.all
