@@ -48,18 +48,20 @@ include ScoresHelper
   end
 
   def update
-    if logged_in?
-      @user = current_user
-      @situations = @user.situations.all
-      @scores = @user.scores.all
-      #studying_switches_for_situations
+    params.permit!
+    binding.pry
+    #if logged_in?
+    #  @user = current_user
+    #  @situations = @user.situations.all
+    #  @scores = @user.scores.all
+    #  #studying_switches_for_situations
       #redirect_to '/users/#{user.id}/flashcards/study_time'
-    elsif
-      @user = current_user
-        redirect_to "/users/:id/flashcards"
-    else
-      redirect_to "/"
-    end
+    #elsif
+    #  @user = current_user
+    #    redirect_to "/users/:id/flashcards"
+    #else
+    #  redirect_to "/"
+    #end
   end
 
   #def new
