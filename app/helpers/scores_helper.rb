@@ -39,6 +39,10 @@ module ScoresHelper
         next
       end
     end
+#the_situations = @situations.map do {|s| s.studying_now == true}
+# do this for scores (with map)
+# do this for phrases (with map)
+
     @scores.each do |s|
       if s.studying_now == true
         the_scores << s.id
