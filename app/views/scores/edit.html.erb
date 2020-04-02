@@ -24,20 +24,20 @@
     <input name="_method" type="hidden" value="patch">
     <input type="hidden" name="authenticity_token" value=<%=form_authenticity_token%>>
     <tr>
-      <td><label for="level1">I don't know this at all.</label></td>
-      <td><label for="level2">It's unfamiliar.</label></td>
-      <td><label for="level3">I feel pessimistic.</label></td>
-      <td><label for="level4">I feel optimistic.</label></td>
-      <td><label for="level5">It's familiar.</label></td>
-      <td><label for="level6">I totally know this!</label></td>
+      <td><label for="level6">I don't know this at all.</label></td>
+      <td><label for="level5">It's unfamiliar.</label></td>
+      <td><label for="level4">I feel pessimistic.</label></td>
+      <td><label for="level3">I feel optimistic.</label></td>
+      <td><label for="level2">It's familiar.</label></td>
+      <td><label for="level1">I totally know this!</label></td>
     </tr>
     <tr>
-    <td><center><input type="radio" id="level1" name="score_id" value= <%@user.scores[0]%>></center></td>
-    <td><center><input type="radio" id="level2" name="score_id" value= <%@user.scores[1]%>></center></td>
-    <td><center><input type="radio" id="level3" name="score_id" value= <%@user.scores[2]%>></center></td>
-    <td><center><input type="radio" id="level4" name="score_id" value= <%@user.scores[3]%>></center></td>
-    <td><center><input type="radio" id="level5" name="score_id" value= <%@user.scores[4]%>></center></td>
-    <td><center><input type="radio" id="level6" name="score_id" value= <%@user.scores[5]%>></center></td>
+    <td><center><input type="radio" id="level6" name="scoobydoo" value=<%=@user.scores[5].id%>></center></td>
+    <td><center><input type="radio" id="level5" name="scoobydoo" value=<%=@user.scores[4].id%>></center></td>
+    <td><center><input type="radio" id="level4" name="scoobydoo" value=<%=@user.scores[3].id%>></center></td>
+    <td><center><input type="radio" id="level3" name="scoobydoo" value=<%=@user.scores[2].id%>></center></td>
+    <td><center><input type="radio" id="level2" name="scoobydoo" value=<%=@user.scores[1].id%>></center></td>
+    <td><center><input type="radio" id="level1" name="scoobydoo" value=<%=@user.scores[0].id%>></center></td>
     </tr>
 
     <tr>

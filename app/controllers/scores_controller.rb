@@ -36,8 +36,8 @@ include ScoresHelper
 
   def edit
     if logged_in?
-      @user = current_user
       params.permit!
+      @user = current_user
       @phrase = Phrase.find(params[:phrase_id])
     elsif
       @user = current_user
