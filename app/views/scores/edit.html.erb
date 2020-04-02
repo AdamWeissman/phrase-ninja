@@ -13,6 +13,41 @@
   <br>
   </center>
 
+<center>
+  <form action="/users/<%=@user.id%>/flashcards/<%=@phrase.id%>/study_time_rank_familiarity" accept-charset="UTF-8" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <input type="hidden" name="authenticity_token" value=<%=form_authenticity_token%>>
+
+    <p>Please select your level of familiarity with the phrase:</p>
+    <input type="radio" id="level1"
+     name="score_id" value= <%@user.scores[0]%> >
+    <label for="level1">I don't know this at all.</label>
+
+    <input type="radio" id="level2"
+     name="score_id" value= <%@user.scores[1]%> >
+    <label for="level2">It's unfamiliar.</label>
+
+    <input type="radio" id="level3"
+     name="score_id" value= <%@user.scores[2]%>>
+    <label for="level3">I feel pessimistic.</label>
+
+    <input type="radio" id="level4"
+     name="score_id" value= <%@user.scores[3]%>>
+    <label for="level4">I feel optimistic.</label>
+
+    <input type="radio" id="level5"
+     name="score_id" value= <%@user.scores[4]%> >
+    <label for="level5">It's familiar.</label>
+
+    <input type="radio" id="level6"
+     name="score_id" value= <%@user.scores[5]%> >
+    <label for="level6">I totally know this!</label>
+
+    <tr><td><input type="submit" value="RANK"></td> <td></td> <td></td> <td></td> <td></td></tr>
+</center>
+
+
+
 basic form TO CHOOSE THE NEW RANK that posts to the update route (working in flashcards zone in routes.rb) ... and redirects back to show.
 patch '/users/:id/flashcards/study_time_rank_familiarity' => "scores#update" #this will redirect to original show, but scores id and phrases familiarity rank should be updated in the update method.
 <br>

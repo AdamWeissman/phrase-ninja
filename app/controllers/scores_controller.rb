@@ -34,12 +34,6 @@ include ScoresHelper
     end
   end
 
-
-  def new
-    @score = Score.new
-  end
-
-
   def edit
     if logged_in?
       @user = current_user
@@ -52,6 +46,25 @@ include ScoresHelper
       redirect_to "/"
     end
   end
+
+  def update
+    if logged_in?
+      @user = current_user
+      @situations = @user.situations.all
+      @scores = @user.scores.all
+      #studying_switches_for_situations
+      #redirect_to '/users/#{user.id}/flashcards/study_time'
+    elsif
+      @user = current_user
+        redirect_to "/users/:id/flashcards"
+    else
+      redirect_to "/"
+    end
+  end
+
+  #def new
+  #  @score = Score.new
+  #end
 
   #def create
   #  @score = Score.new(score_params)
@@ -67,19 +80,7 @@ include ScoresHelper
   #  end
   #end
 
-  def update
-    #this is where there user selects the score
-    #will need to assign familiarity scores and reassign score ids
-    #respond_to do |format|
-    #  if @score.update(phrasescore_params)
-    #    format.html { redirect_to @score, notice: 'Score was successfully updated.' }
-    #    format.json { render :show, status: :ok, location: @phrasescore }
-    #  else
-    #    format.html { render :edit }
-    #    format.json { render json: @score.errors, status: :unprocessable_entity }
-    #  end
-    #end
-  end
+
 
 
   #def destroy
@@ -90,7 +91,7 @@ include ScoresHelper
   #  end
   #end
 
-  private
+  #private
   #def set_user
   #    @user = current_user
   #end
@@ -98,8 +99,8 @@ include ScoresHelper
 
 
     # Only allow a list of trusted parameters through.
-    def score_params
-      params.require(:score).permit(:familiarity_name, :familiarity_name_corresponding_points, :studying_now)
-    end
+    #def score_params
+  #    params.require(:score).permit(:familiarity_name, :familiarity_name_corresponding_points, :studying_now)
+    #end
 
 end
