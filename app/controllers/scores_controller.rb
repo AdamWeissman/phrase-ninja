@@ -48,20 +48,27 @@ include ScoresHelper
   end
 
   def update
+    #hmm seems I'm not actually using params[:user_id] here, may be a way to DRY it up.
     params.permit!
-    #binding.pry
-    #if logged_in?
-    #  @user = current_user
-    #  @situations = @user.situations.all
-    #  @scores = @user.scores.all
-    #  #studying_switches_for_situations
-      #redirect_to '/users/#{user.id}/flashcards/study_time'
-    #elsif
-    #  @user = current_user
-    #    redirect_to "/users/:id/flashcards"
-    #else
-    #  redirect_to "/"
-    #end
+    if logged_in?
+      @user = current_user
+      @phrase = Phrase.find(params[:phrase_id])
+      @phrase.score_id = params[:score_id]
+      @phrase.save
+      @phrase.familiarity_score += Score.find(params[:score_id]).familiarity_name_corresponding_points
+      @phrase.save
+      @situations = @user.situations.all
+      @scores = @user.scores.all
+      studying_switches_for_scores
+      @phrases = the_lineup
+      @phrase = grab_that_phrase(@phrases)
+      render "scores/show"
+    elsif
+      @user = current_user
+        redirect_to "/users/:id/flashcards"
+    else
+      redirect_to "/"
+    end
   end
 
   #def new
