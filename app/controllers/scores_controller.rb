@@ -62,8 +62,12 @@ include ScoresHelper
       #studying_switches_for_scores_on_update ... this code is now vestigial since studying_now has already been set and the user is still in the cycle.
       @phrases = the_lineup2 #this should just make sure that there are at least 3 phrases... or if a phrase's score is changed to something that isn't being studied... then it won't appear (the phrase with the new score_id)
       #another important thing for the lineup2 is to make sure the user doesn't get stuck in an infinite loop... there should be some sort of control logic, to have a completion page (You completed this study cycle)
-      @phrase = lowest_three_or_bust(@phrases) # OR take whatever is there, and then have some message "great job! and redirect to situatons home"
-      render "scores/show"
+      @phrase = grab_that_phrase_v2(@phrases)
+      if !@phrases.include?(@phrase)
+        redirect_to "/situations", notice: "You've completed your study cycle." # OR take whatever is there, and then have some message "great job! and redirect to situatons home"
+      else
+        render "scores/show"
+      end
     elsif
       @user = current_user
         redirect_to "/users/:id/flashcards"
