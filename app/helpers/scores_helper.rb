@@ -151,4 +151,19 @@ module ScoresHelper
     random_lowest_phrase
   end
 
+  def lowest_three_or_bust(phrases)
+    if phrases.min_by(3) {|phrase_object| phrase_object.familiarity_score }
+      random_lowest_phrase = _.sample
+      random_lowest_phrase
+    elsif phrases.min_by(2) {|phrase_object| phrase_object.familiarity_score }
+      random_lowest_phrase = _.sample
+      random_lowest_phrase
+    elsif phrases.min_by(1) {|phrase_object| phrase_object.familiarity_score }
+        lowest_phrase = _
+        lowest_phrase
+    else phrases.empty?
+      redirect_to "/situations", notice: "Great job, you finished the cycle!"
+    end
+  end
+
 end
