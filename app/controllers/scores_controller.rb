@@ -26,6 +26,11 @@ include ScoresHelper
       studying_switches_for_scores
       @phrases = the_lineup
       @phrase = grab_that_phrase(@phrases)
+      if !@phrases.include?(@phrase)
+        redirect_to "/situations", notice: "Your search options don't meet minimum criteria for a search cycle." # OR take whatever is there, and then have some message "great job! and redirect to situatons home"
+      else
+        render "scores/show"
+      end
     elsif
       @user = current_user
         redirect_to "/users/:id/flashcards"
