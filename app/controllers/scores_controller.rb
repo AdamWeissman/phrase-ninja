@@ -59,7 +59,8 @@ include ScoresHelper
       @phrase.save
       @situations = @user.situations.all
       @scores = @user.scores.all
-      studying_switches_for_scores
+      studying_switches_for_scores_on_update
+      #binding.pry
       @phrases = the_lineup
       @phrase = grab_that_phrase(@phrases)
       render "scores/show"

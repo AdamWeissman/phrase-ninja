@@ -28,6 +28,21 @@ module ScoresHelper
     end
   end
 
+  def studying_switches_for_scores_on_update #fix this so true values don't persist
+    params.permit!
+    @scores.each do |s|
+      score = Score.find(s[:id])
+      if s[:studying_now] == "on"
+        score.studying_now = true
+        score.save
+      else
+        score.studying_now = false
+        score.save
+      end
+    end
+  end
+
+
   def the_lineup #in short, this returns only phrases that have situations which are selected AND scores (familiarity levels) which have been selected
     the_situations = []
     the_scores = []
@@ -75,7 +90,7 @@ module ScoresHelper
     #a phrase should have the correct id from scores array
     #a phrase should also have a score less than the trip wire
 
-      #phrase.familiarity score should autoset at situations home
+    #phrase.familiarity score should autoset at situations home (it does)
   end
 
   def grab_that_phrase(phrases)

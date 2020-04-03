@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   post '/users/:id/flashcards' => "scores#index" #the user sees the scores and is allowed to click what they want
 
   post '/users/:id/flashcards/study_time' => "scores#show" #Routes to flashcard_first view... with unpopulated answer.
-  get '/users/:id/flashcards/study_time' => "scores#show" #this is vestigial code, but perhaps I'll need it when redirecting from scores update.
+  #get '/users/:id/flashcards/study_time' => "scores#show" #this is vestigial code, but perhaps I'll need it when redirecting from scores update.
 
   get '/users/:id/flashcards/:phrase_id/study_time_show_answer' => "scores#edit" #Routes to flashcard with solution
   patch '/users/:id/flashcards/:phrase_id/study_time_rank_familiarity' => "scores#update" #Routes to flashcard_with_score
