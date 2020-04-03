@@ -59,7 +59,7 @@ include ScoresHelper
       @phrase.save
       @situations = @user.situations.all
       @scores = @user.scores.all
-      #studying_switches_for_scores_on_update ... rewrite to make sure lineup only includes phrases that have scores set to true
+      #studying_switches_for_scores_on_update ... this code is now vestigial since studying_now has already been set and the user is still in the cycle. 
       @phrases = the_lineup2 #this should just make sure that there are at least 3 phrases... or if a phrase's score is changed to something that isn't being studied... then it won't appear (the phrase with the new score_id)
       #another important thing for the lineup2 is to make sure the user doesn't get stuck in an infinite loop... there should be some sort of control logic, to have a completion page (You completed this study cycle)
       @phrase = grab_that_phrase(@phrases) # OR take whatever is there, and then have some message "great job! and redirect to situatons home"

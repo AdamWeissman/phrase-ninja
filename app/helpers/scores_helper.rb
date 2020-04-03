@@ -28,19 +28,19 @@ module ScoresHelper
     end
   end
 
-  def studying_switches_for_scores_on_update #this is for "in study cycle" there are no checkboxes
-    params.permit!
-    @scores.each do |s|
-      score = Score.find(s[:id])
-      if #there are no checkboxes, but still needs to confirm true or false, may be able to delete this code altogether or replace with something else
-        score.studying_now = true
-        score.save
-      else
-        score.studying_now = false
-        score.save
-      end
-    end
-  end
+  #def studying_switches_for_scores_on_update #this is for "in study cycle" there are no checkboxes
+  #  params.permit!
+  #  @scores.each do |s|
+  #    score = Score.find(s[:id])
+  #    if # true and false values persist from previous score setting.
+  #      score.studying_now = true
+  #      score.save
+  #    else
+  #      score.studying_now = false
+  #      score.save
+  #    end
+  #  end
+  #end
 
 
   def the_lineup #in short, this returns only phrases that have situations which are selected AND scores (familiarity levels) which have been selected
