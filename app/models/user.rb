@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth) #need to handle new users ... user first_or_create
     # Creates a new user only if it doesn't exist
     where(email: auth.info.email).first_or_initialize do |user|
       #user.name = auth.info.name
