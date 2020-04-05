@@ -13,7 +13,7 @@ Specs:
 - [X] Include third party signup/login (how e.g. Devise/OmniAuth) google with omniauth
 - [X] Include nested resource show or index (URL e.g. users/2/recipes) there are many that were manually defined in addition to the railsy situations/phrases
 - [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) a user can add a new phrase on a situation after initial parsing takes place (also full CRUD)
-- [/] Include form display of validation errors (form URL e.g. /recipes/new) NOTE!!! I'm not sure exactly if I fulfilled this requirement.  
+- [X] Include form display of validation errors (form URL e.g. /recipes/new) It works for email.
 
 Confirm:
 - [/] The application is pretty DRY (not nearly dry enough -- that's goal for refactor)
