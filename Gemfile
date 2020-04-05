@@ -40,10 +40,10 @@ gem 'google-cloud-translate', require: 'google/cloud/translate'
 gem 'google-api-client'
 gem 'google-cloud-storage'
 
-#morphological text analyzer ... PLEASE WORK!!!!
-gem 'romaji'
-gem 'tiny_segmenter'
-gem 'tataki'
+#morphological text analyzer ... these are no longer necessary because of google_pronounce in the vendor file
+#gem 'romaji'
+#gem 'tiny_segmenter'
+#gem 'tataki'
 
 
 # Use Active Storage variant
