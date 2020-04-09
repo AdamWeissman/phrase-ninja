@@ -5,7 +5,7 @@ class SituationsController < ApplicationController
     if logged_in?
       @user = current_user
       @situations = @user.situations.all
-      @situations.each do |situation|
+      @situations.each do |situation| #this should be a method on the situation model
         sitch_phrases = situation.phrases.all
         sitch_phrases.each do |phrase|
           #binding.pry
@@ -18,6 +18,7 @@ class SituationsController < ApplicationController
       redirect_to '/'
     end
   end
+
 
   def show
     redirect_to "/situations"
@@ -37,9 +38,9 @@ class SituationsController < ApplicationController
   end
 
   def create
-    if logged_in?
+    if logged_in? #change this to a before action
       @user = current_user
-      @situation = @user.situations.new(situation_params)
+      @situation = @user.situations.new(situation_params) #current_user.situations.new
       @situation.save
       #this_situation = @situation.id this appears to have been vestigial code, but if something goes wrong with situations may need to put it back.
       @situation.whip_up_some_phrases

@@ -1,4 +1,4 @@
-class Translator
+class Translator  #this should probabyl be in the library ... this could also be a gem
 
   attr_accessor :english, :english_equivalent_text, :translated_text, :phonetic_text
 
@@ -11,7 +11,7 @@ class Translator
   def translate
     translator = Google::Cloud::Translate.new version: :v2
 
-    the_translation = translator.translate english, to: "ja" #this English refers to the attr_accessor variable set in initialize 
+    the_translation = translator.translate english, to: "ja" #this English refers to the attr_accessor variable set in initialize
 
     self.translated_text = the_translation.text
 

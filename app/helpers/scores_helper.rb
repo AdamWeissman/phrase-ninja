@@ -1,4 +1,4 @@
-module ScoresHelper
+module ScoresHelper #move this to concerns!!!!!!  or possibly directly on the model if it's interacting with the database.
 
   def studying_switches_for_situations
     params.permit!
