@@ -1,4 +1,4 @@
-class PhraseParser
+class PhraseParser #should this also go into models/concerns?
 
   attr_accessor :text_blob, :the_situation_id, :user_id
 
