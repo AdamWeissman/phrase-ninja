@@ -1,5 +1,8 @@
 module ScoresHelper #move this to concerns!!!!!!  or possibly directly on the model if it's interacting with the database.
 
+#just moved it to concerns April 13th 9:13AM (moved from helpers)
+#MAKE SURE TO FIND OUT/CLARIFY NAME SPACING... NOT JUST FOR THIS HELPER THAT NOW WORKS IN CONCERNS, BUT ALSO HOW.WHY THE TRANSLATOR THAT WAS IN THE MODEL STOPPED WORKING IN THE LIBRARY, BUT WORKED IN CONCERNS
+
   def studying_switches_for_situations
     params.permit!
     params[:user][:situations].each do |s|

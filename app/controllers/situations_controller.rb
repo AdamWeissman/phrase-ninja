@@ -69,7 +69,7 @@ class SituationsController < ApplicationController
   private
     def set_situation
       if logged_in?
-        #@user = current_user
+        @user = current_user
         @situation = @user.situations.find(params[:id])
       elsif
         @user = current_user
