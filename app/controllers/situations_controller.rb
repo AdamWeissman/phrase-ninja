@@ -4,7 +4,7 @@ class SituationsController < ApplicationController
 
   def index
     if logged_in?
-      @user # = current_user
+      #@user # = current_user
       @situations = @user.situations.all
       @situations.each do |situation| #this should be a method on the situation model
         sitch_phrases = situation.phrases.all
@@ -26,7 +26,7 @@ class SituationsController < ApplicationController
 
   def new
     if logged_in?
-      @user #= current_user
+      #@user #= current_user
       @situation = @user.situations.new
     else
       redirect_to "/"
@@ -39,7 +39,7 @@ class SituationsController < ApplicationController
 
   def create
     if logged_in? #change this to a before action
-      @user #= current_user
+      #@user #= current_user
       @situation = @user.situations.new(situation_params) #current_user.situations.new
       @situation.save
       #this_situation = @situation.id this appears to have been vestigial code, but if something goes wrong with situations may need to put it back.
@@ -69,7 +69,7 @@ class SituationsController < ApplicationController
   private
     def set_situation
       if logged_in?
-        @user = current_user
+        #@user = current_user
         @situation = @user.situations.find(params[:id])
       elsif
         @user = current_user
