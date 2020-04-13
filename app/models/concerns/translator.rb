@@ -1,4 +1,4 @@
-class Translator  #this should probabyl be in the library ... this could also be a gem
+class Translator  #MOVED TO MODELS/CONCERNS. DOES NOT WORK IN LIBRARY. WHY?
 
   attr_accessor :english, :english_equivalent_text, :translated_text, :phonetic_text
 
