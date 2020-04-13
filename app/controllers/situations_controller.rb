@@ -19,7 +19,6 @@ class SituationsController < ApplicationController
     end
   end
 
-
   def show
     redirect_to "/situations"
   end
@@ -82,4 +81,9 @@ class SituationsController < ApplicationController
     def situation_params
       params.require(:situation).permit(:name, :studying_now, :phrase_id, :text_blob_for_phrases, :user_id, :score_average, :score_median, :score_mode)
     end
+
+    def preset_user
+      @user = current_user
+    end
+
 end
