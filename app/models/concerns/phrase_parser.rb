@@ -1,5 +1,5 @@
-class PhraseParser #should this also go into models/concerns?
-
+class PhraseParser #this is now in concerns... previously just in models.
+  
   attr_accessor :text_blob, :the_situation_id, :user_id
 
   def initialize(text_blob_for_phrases, id, user_id)
