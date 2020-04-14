@@ -1,9 +1,10 @@
 class PhrasesController < ApplicationController
   before_action :set_phrase, except: [:destroy, :edit, :update, :new, :create]
+  before_action :preset_user
 
   def index
     if logged_in?
-      @user = current_user
+      #@user = current_user
       @situation = @user.situations.find(params[:situation_id])
       @phrases = @situation.phrases
       #binding.pry
@@ -19,11 +20,11 @@ class PhrasesController < ApplicationController
   def new
     #binding.pry
     if logged_in?
-      @user = current_user
+      #@user = current_user
       @situation = @user.situations.find(params[:situation_id])
       @phrase = @situation.phrases.new
     elsif
-      @user = current_user
+      #@user = current_user
         redirect_to "/situations"
     else
       redirect_to "/"
@@ -33,7 +34,7 @@ class PhrasesController < ApplicationController
   def create
     #binding.pry
     if logged_in?
-      @user = current_user
+      #@user = current_user
       @situation = @user.situations.find(params[:situation_id])
       #binding.pry
       @phrase = @situation.phrases.new(category: params[:phrase][:category], english: params[:phrase][:english], situation_id: params[:situation_id], score_id: @user.brand_new_score(current_user))
@@ -42,7 +43,7 @@ class PhrasesController < ApplicationController
       @phrase.save
       redirect_to "/situations/#{@situation.id}/phrases", notice: 'Phrase was successfully created.'
     elsif
-      @user = current_user
+      #@user = current_user
         redirect_to "/situations/#{@situation.id}/phrases"
     else
       redirect_to "/"
@@ -61,7 +62,7 @@ class PhrasesController < ApplicationController
 
   def edit
     if logged_in?
-      @user = current_user
+      #@user = current_user
       #binding.pry
       @situation = @user.situations.find(params[:situation_id]) #this line must stay like this in order for index to populate
       @phrase = @situation.phrases.find(params[:phrase_id]) #this line must stay like this in order for index to populate
@@ -92,14 +93,14 @@ class PhrasesController < ApplicationController
 
   def destroy
     if logged_in?
-      @user = current_user
+      #@user = current_user
       #binding.pry
       @situation = @user.situations.find(params[:situation_id]) #this line must stay like this in order for index to populate
       @phrase = @situation.phrases.find(params[:phrase_id]) #this line must stay like this in order for index to populate
       @phrase.destroy
       redirect_to "/situations/#{@situation.id}/phrases", notice: 'Phrase was successfully updated.'
     elsif
-      @user = current_user
+      #@user = current_user
         redirect_to "/situations"
     else
       redirect_to "/"
