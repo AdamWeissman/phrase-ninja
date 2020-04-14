@@ -83,8 +83,8 @@ class SituationsController < ApplicationController
       params.require(:situation).permit(:name, :studying_now, :phrase_id, :text_blob_for_phrases, :user_id, :score_average, :score_median, :score_mode)
     end
 
-    def preset_user
-      @user = current_user
-    end
+    #def preset_user
+    #  @user = current_user
+    #end
 
 end

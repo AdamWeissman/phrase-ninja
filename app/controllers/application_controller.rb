@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
       redirect_to '/' if !logged_in?
     end
 
+    def preset_user
+      @user = current_user
+    end
+
 end
