@@ -1,6 +1,7 @@
 class Phrase < ApplicationRecord
   belongs_to :situation
   belongs_to :score
+  belongs_to :user
 
   def translate
     if english.present?

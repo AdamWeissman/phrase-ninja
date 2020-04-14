@@ -22,10 +22,12 @@ ActiveRecord::Schema.define(version: 2020_03_17_105813) do
     t.boolean "studying_now", default: false
     t.integer "situation_id", null: false
     t.integer "score_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["score_id"], name: "index_phrases_on_score_id"
     t.index ["situation_id"], name: "index_phrases_on_situation_id"
+    t.index ["user_id"], name: "index_phrases_on_user_id"
   end
 
   create_table "scores", force: :cascade do |t|
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_105813) do
 
   add_foreign_key "phrases", "scores"
   add_foreign_key "phrases", "situations"
+  add_foreign_key "phrases", "users"
   add_foreign_key "scores", "users"
   add_foreign_key "situations", "users"
 end

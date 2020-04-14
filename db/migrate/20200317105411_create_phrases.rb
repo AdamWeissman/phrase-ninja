@@ -13,6 +13,8 @@ class CreatePhrases < ActiveRecord::Migration[6.0]
 
       t.belongs_to :situation, null: false, foreign_key: true
       t.belongs_to :score, null: false, foreign_key: true
+      t.belongs_to :user, null: false, foreign_key: true
+
       t.timestamps
     end
   end
