@@ -34,8 +34,6 @@ class Phrase < ApplicationRecord
     where(:familiarity_score => 89.0)
   end
 
-   x = adam.phrases.map {|phrase| phrase.familiarity_score == phrase.i_dont_know_this_at_all}
-
   def translate
     if english.present?
       translator = Translator.new(english)
