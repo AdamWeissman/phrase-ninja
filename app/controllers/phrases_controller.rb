@@ -11,8 +11,8 @@ class PhrasesController < ApplicationController
         @situation = @user.situations.find(params[:situation_id])
         @phrases = @situation.phrases
       else
-        @phrases = @user.phrases #should add
-        #binding.pry
+        @phrases = @user.phrases
+        render "phrases/index_all"
       end
     else
       redirect_to '/'
