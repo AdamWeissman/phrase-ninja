@@ -1,13 +1,19 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, except: [:destroy, :edit, :update, :new, :create]
+  before_action :set_phrase, except: [:destroy, :edit, :update, :new, :create, :index]
   before_action :preset_user
 
   def index
     if logged_in?
       #@user = current_user
-      @situation = @user.situations.find(params[:situation_id])
-      @phrases = @situation.phrases
       #binding.pry
+      #params.permit!
+      if params[:situation_id]
+        @situation = @user.situations.find(params[:situation_id])
+        @phrases = @situation.phrases
+      else
+        @phrases = @user.phrases #should add
+        #binding.pry
+      end
     else
       redirect_to '/'
     end

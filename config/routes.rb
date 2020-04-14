@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#google_auth'
   get 'auth/failure', to: redirect('/')
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resources :phrases, only: [:index]
+  end
+  
 
   # Manual routing for delete since there will not be a show page for situations... situations show redirects to index.
   get '/situations/:id/destroy' => 'situations#destroy'
@@ -28,6 +31,8 @@ Rails.application.routes.draw do
   resources :situations do
     resources :phrases, except: [:destroy, :edit, :update]
   end
+
+  # a page that lists all phrases ...
 
   # Manual routing for phrase edit that redirects to index
   get "/situations/:situation_id/phrases/:phrase_id/edit" => 'phrases#edit'

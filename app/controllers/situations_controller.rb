@@ -6,15 +6,16 @@ class SituationsController < ApplicationController
     if logged_in?
       #@user # = current_user
       @situations = @user.situations.all
-      @situations.each do |situation| #this should be a method on the situation model
-        sitch_phrases = situation.phrases.all
-        sitch_phrases.each do |phrase|
-          #binding.pry
-          phrase.familiarity_score = phrase.score.familiarity_name_corresponding_points
-          phrase.save
-        end
-      situation.save
-    end
+      @user.reset_all_scores
+      #@situations.each do |situation| #this should be a method on the situation model
+      #  sitch_phrases = situation.phrases.all
+      #  sitch_phrases.each do |phrase|
+      #    #binding.pry
+      #    phrase.familiarity_score = phrase.score.familiarity_name_corresponding_points
+      #    phrase.save
+      #  end
+      #situation.save
+      #end
     else
       redirect_to '/'
     end

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :situations
   has_many :scores
+  has_many :phrases
 
   has_secure_password
 
@@ -22,5 +23,22 @@ class User < ApplicationRecord
     @score_id = grab_that_score.id
     @score_id
   end
+
+  def reset_all_scores
+    @situations = self.situations.all
+    @situations.each do |situation| #this should be a method on the situation model
+      sitch_phrases = situation.phrases.all
+      sitch_phrases.each do |phrase|
+        #binding.pry
+        phrase.familiarity_score = phrase.score.familiarity_name_corresponding_points
+        phrase.save
+      end
+      situation.save
+    end
+  end
+
+
+
+
 
 end
