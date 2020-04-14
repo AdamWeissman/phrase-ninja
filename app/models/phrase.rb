@@ -27,18 +27,14 @@ class Phrase < ApplicationRecord
   end
 
   def self.familiar
-    where(:familiarity_score => 34.0)
-  end
-
-  def self.optimistic
-    where(:familiarity_score => 34.0)
+    where(:familiarity_score => 55.0)
   end
 
   def self.i_totally_know_this
     where(:familiarity_score => 89.0)
   end
 
-
+   x = adam.phrases.map {|phrase| phrase.familiarity_score == phrase.i_dont_know_this_at_all}
 
   def translate
     if english.present?
